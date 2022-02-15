@@ -11,96 +11,25 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
-
-char	*fix_to_return(char *str)
-{
-	unsigned int	i;
-	char			*aux;
-	char			*aux2;
-
-	if ((!str) || (str[0] == '\0')){
-		str = NULL;
-		return (NULL);
-	}
-	i = 0;
-	while ((str[i] != '\n') && (str[i] != '\0'))
-		i++;
-	aux = malloc(sizeof(char) * (i + 2));
-	if (!aux)
-		return (NULL);
-	i = 0;
-	while ((str[i] != '\n') && (str[i] != '\0'))
-	{
-		aux[i] = str[i];
-		i++;
-	}
-	if (str[i] == '\0')
-		aux[i] = '\0';
-	else
-	{
-		aux[i] = '\n';
-		aux[++i] = '\0';
-	}
-	aux2=aux;
-	free(aux);
-	return (aux2);
-}
-
-char	*fix_new_line(char *str)
-{
-	char			*aux;
-	unsigned int	i;
-	unsigned int	j;
-
-	i = 0;
-	while ((str[i] != '\n') && (str[i] != '\0'))
-		i++;
-	i++;
-	j = i;
-	while (str[j] != '\0')
-		j++;
-	aux = malloc(sizeof(char) * (j + 1));
-	if (!aux)
-		return (NULL);
-	j = 0;
-	while (str[i] != '\0')
-	{
-		aux[j] = str[i];
-		i++;
-		j++;
-	}
-	aux[j] = '\0';
-	return (aux);
-}
 
 char	*get_next_line(int fd)
 {
-	static char	*line;
+	static char	*line[200];
 	char		*buffer;
-	size_t		apt;
+	size_t		flag;
 
-	if ((fd < 0) && (BUFFER_SIZE <= 0))
+	if (fd < 0 || BUFFER_SIZE < 0)
 		return (NULL);
-	buffer = malloc (sizeof(char) * BUFFER_SIZE);
-	if (!buffer)
-		return (NULL);
-	apt = BUFFER_SIZE;
-	if (!line)
-		line = ft_strdup("");
-	else
+	buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
+	flag = BUFFER_SIZE;
+	if (!line[fd])
+		line[fd] = ft_strdup("");
+	while ((!contains(line[fd], '\n') && (flag == BUFFER_SIZE)))
 	{
-		char *newLine = fix_new_line(line);
-		free(line);
-		line = ft_strdup(newLine);
-		free(newLine);
-	}
-	while ((!contains(line, '\n')) && (apt == BUFFER_SIZE))
-	{
-		free(line);
-		apt = read(fd, buffer, BUFFER_SIZE);
-		line = ft_strjoin(line, buffer, apt);
+		flag = read(fd, buffer, BUFFER_SIZE);
+		line[fd] = ft_strjoin(line[fd], buffer, flag);
+		buffer = NULL;
 	}
 	free(buffer);
-	return (fix_to_return(line));
+	return (line[fd]);
 }
