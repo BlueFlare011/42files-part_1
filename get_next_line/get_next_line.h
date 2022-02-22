@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
-
+# define MAX_FD 65535
 char	*get_next_line(int fd);
 char	*ft_strjoin(char const *s1, char const *s2, size_t apt);
 int		contains(char *str, char c);
