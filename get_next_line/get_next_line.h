@@ -22,7 +22,7 @@
 # include <unistd.h>
 # define MAX_FD 65535
 char	*get_next_line(int fd);
-char	*ft_strjoin(char const *s1, char const *s2, size_t apt);
+char	*ft_strjoin(char const *s1, char const *s2);
 int		contains(char *str, char c);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlen(const char *str);

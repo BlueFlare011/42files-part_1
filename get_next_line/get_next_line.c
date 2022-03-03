@@ -11,103 +11,46 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
-void cleaning(char *line)
+char *build_line(char *container)
 {
-	free(line);
-	line = NULL;
-}
-
-char *clean_static(char **line, int fd)
-{
-	char			*aux;
-	unsigned int	i;
-	unsigned int	j;
+	char	*line;
+	int		i;
 
 	i = 0;
-	while (line[fd][i] != '\n')
+	while ((container[i] != '\n') && (container[i] != '\0'))
 		i++;
-	j = ++i;
-	while (line[fd][j] != '\0')
-		j++;
-	aux = malloc(sizeof(char) * (j + 1));
-	if (!aux)
-		return (NULL);
-	j = 0;
-	while (line[fd][i] != '\0')
-	{
-		aux[j] = line[fd][i];
-		j++;
-		i++;
-	}
-	aux[j] = '\0';
-	return (aux);
-}
-
-char	*to_return(char **line, int fd)
-{
-	unsigned int	i;
-	char			*aux;
-
-	i = 0;	
-	while ((line[fd][i] != '\n') && (line[fd][i] != '\0'))
-		i++;
-	aux = malloc(sizeof(char) * (i + 2));
-	if (!aux)
+	line = malloc(sizeof(char) * (i + 2));
+	if (!line)
 		return (NULL);
 	i = 0;
-	while ((line[fd][i] != '\n') && (line[fd][i] != '\0'))
+	while ((container[i] != '\n') && (container[i] != '\0'))
 	{
-		aux[i] = line[fd][i];
+		line[i] = container[i];
 		i++;
 	}
-	if (line[fd][i] == '\0')
-		aux[i] = '\0';
-	else
-	{
-		aux[i++] = '\n';
-		aux[i] = '\0';
-	}
-	return (aux);
+	line[i++] = '\n';
+	line[i] = '\0';
+	return (line);
 }
 
-char	*get_the_read(char **line, char *buffer, int fd)
+char *get_next_line(int fd)
 {
-	size_t	flag;
-
-	if (!line[fd])
-		line[fd] = ft_strdup("");
-	else
-		line[fd] = ft_strdup(clean_static(line, fd));
-	flag = BUFFER_SIZE;
-	while (!contains(buffer, '\n') && (flag == BUFFER_SIZE))
-	{
-		flag = read(fd, buffer, BUFFER_SIZE);
-		line[fd] = ft_strjoin(line[fd], buffer, flag);
-	}
-	if (((int)flag == 0))
-	{
-		cleaning(line[fd]);
-		cleaning(buffer);
-		return (NULL);
-	}
-	return (to_return(line, fd));
-}
-
-char	*get_next_line(int fd)
-{
+	static char	*container;
 	char		*buffer;
-	char		*one_line;
-	static char	*line[MAX_FD];
+	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
-		return(NULL);
-	one_line = get_the_read(line, buffer, fd);
-	if (!one_line)
 		return (NULL);
-	return (one_line);
+	if (!container)
+		container = ft_strdup("");
+	while ((read(fd, buffer, BUFFER_SIZE) == BUFFER_SIZE) && !contains(buffer, '\n'))
+		container = ft_strjoin(container, buffer);
+	container = ft_strjoin(container, buffer);
+	line = build_line(container);
+	free(buffer);
+	return (line);
 }
