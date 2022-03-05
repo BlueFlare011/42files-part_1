@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 char *build_line(char *container)
 {
@@ -38,19 +39,30 @@ char *get_next_line(int fd)
 {
 	static char	*container;
 	char		*buffer;
+	char		*aux;
 	char		*line;
+	size_t		flag;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	flag = BUFFER_SIZE;
+	buffer = malloc(sizeof(char) * BUFFER_SIZE);
 	if (!buffer)
 		return (NULL);
 	if (!container)
 		container = ft_strdup("");
-	while ((read(fd, buffer, BUFFER_SIZE) == BUFFER_SIZE) && !contains(buffer, '\n'))
-		container = ft_strjoin(container, buffer);
-	container = ft_strjoin(container, buffer);
+	while ((!contains(container, '\n')) && (flag == BUFFER_SIZE))
+	{
+		free (container);
+		flag = read(fd, buffer, BUFFER_SIZE);
+		container = ft_strjoin(container, buffer, flag);
+	}
+	if (!flag)
+		return (NULL);
 	line = build_line(container);
+	aux = container;
+	container = ft_strdup(container + ft_strlen(line));
+	free(aux);
 	free(buffer);
 	return (line);
 }
