@@ -11,58 +11,92 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
-char *build_line(char *container)
+void	free_all_mem(char *str)
 {
-	char	*line;
-	int		i;
-
-	i = 0;
-	while ((container[i] != '\n') && (container[i] != '\0'))
-		i++;
-	line = malloc(sizeof(char) * (i + 2));
-	if (!line)
-		return (NULL);
-	i = 0;
-	while ((container[i] != '\n') && (container[i] != '\0'))
-	{
-		line[i] = container[i];
-		i++;
-	}
-	line[i++] = '\n';
-	line[i] = '\0';
-	return (line);
+	free (str);
+	str = NULL;
 }
 
-char *get_next_line(int fd)
+char	*fix_to_return(char *str, int *last)
 {
-	static char	*container;
-	char		*buffer;
-	char		*aux;
-	char		*line;
-	size_t		flag;
+	unsigned int	i;
+	char			*aux;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if ((!str) || (str[0] == '\0'))
 		return (NULL);
-	flag = BUFFER_SIZE;
-	buffer = malloc(sizeof(char) * BUFFER_SIZE);
+	i = 0;
+	while ((str[i] != '\n') && (str[i] != '\0'))
+		i++;
+	aux = malloc(sizeof(char) * (i + 2));
+	if (!aux)
+		return (NULL);
+	i = 0;
+	while ((str[i] != '\n') && (str[i] != '\0'))
+	{
+		aux[i] = str[i];
+		i++;
+	}
+	if (str[i] == '\n')
+		aux[i++] = '\n';
+	else
+		*(last) = 1;
+	aux[i] = '\0';
+	return (aux);
+}
+
+char	*get_the_read(int fd, int start, char *line)
+{
+	char	*buffer;
+	char	*line2;
+	char	*aux;
+	size_t	apt;
+
+	if (start)
+		line2 = ft_strdup("");
+	else
+		line2 = line;
+	buffer = malloc (sizeof(char) * BUFFER_SIZE);
 	if (!buffer)
 		return (NULL);
-	if (!container)
-		container = ft_strdup("");
-	while ((!contains(container, '\n')) && (flag == BUFFER_SIZE))
+	apt = BUFFER_SIZE;
+	while ((!contains(line2, '\n', 0)) && (apt == BUFFER_SIZE))
 	{
-		free (container);
-		flag = read(fd, buffer, BUFFER_SIZE);
-		container = ft_strjoin(container, buffer, flag);
+		aux = line2;
+		apt = read(fd, buffer, BUFFER_SIZE);
+		if ((int)apt == -1)
+			return (NULL);
+		line2 = ft_strjoin(line2, buffer, apt);
+		free_all_mem(aux);
 	}
-	if (!flag)
+	free_all_mem(buffer);
+	return (line2);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*line;
+	char		*aux;
+	char		*result;
+	int			last;
+
+	if ((fd < 0) && (BUFFER_SIZE <= 0))
 		return (NULL);
-	line = build_line(container);
-	aux = container;
-	container = ft_strdup(container + ft_strlen(line));
-	free(aux);
-	free(buffer);
-	return (line);
+	if (line)
+	{
+		aux = line;
+		line = ft_strdup(line + contains(line, '\n', 1) + 1);
+		line = get_the_read(fd, 0, line);
+		free_all_mem(aux);
+	}
+	else
+		line = get_the_read(fd, 1, line);
+	last = 0;
+	result = fix_to_return(line, &last);
+	if (last)
+	{
+		free(line);
+		line = NULL;
+	}
+	return (result);
 }

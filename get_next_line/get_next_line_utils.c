@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-char	*ft_strjoin(char const *s1, char const *s2, size_t flag)
+char	*ft_strjoin(char const *s1, char const *s2, size_t apt)
 {
 	char	*aux;
 	int		i;
@@ -30,7 +30,7 @@ char	*ft_strjoin(char const *s1, char const *s2, size_t flag)
 		aux[i] = s1[i];
 		i++;
 	}
-	while (j < (int)flag)
+	while (j < (int)apt)
 	{
 		aux[i] = s2[j];
 		j++;
@@ -40,20 +40,29 @@ char	*ft_strjoin(char const *s1, char const *s2, size_t flag)
 	return (aux);
 }
 
-int	contains(char *str, char c)
+int	contains(char *str, char c, int flag)
 {
 	int	i;
 	int	j;
 
 	j = 0;
 	i = 0;
-	while (str[i] != '\0')
+	if (!flag)
 	{
-		if (str[i] == c)
-			j++;
-		i++;
+		while (str[i] != '\0')
+		{
+			if (str[i] == c)
+				j++;
+			i++;
+		}
+		return (j);
 	}
-	return (j);
+	else
+	{
+		while ((str[i] != c) && (str[i] != '\0'))
+			i++;
+		return (i);
+	}
 }
 
 char	*ft_strdup(const char *s1)
