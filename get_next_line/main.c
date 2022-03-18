@@ -10,7 +10,7 @@ int main(){
 	// atexit(leaks);
 	char *str;
 	int fd = open("file_tester.txt", O_RDONLY);
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		str = get_next_line(fd);
 		printf("%s", str);

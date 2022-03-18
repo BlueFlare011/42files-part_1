@@ -23,6 +23,11 @@ char	*fix_to_return(char *str, int *last)
 	unsigned int	i;
 	char			*aux;
 
+	if ((!str) || (*str == '\0'))
+	{
+		free_all_mem(str);
+		return (NULL);
+	}
 	i = 0;
 	while ((str[i] != '\n') && (str[i] != '\0'))
 		i++;
@@ -96,11 +101,6 @@ char	*get_next_line(int fd)
 	else
 		line = get_the_read(fd, 1, line);
 	last = 0;
-	if (!line)
-		return (NULL);
-	if (line[0] == '\0'){
-		free(line);
-		return NULL;}
 	result = fix_to_return(line, &last);
 	if (last)
 	{
