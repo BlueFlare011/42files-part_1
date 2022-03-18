@@ -33,7 +33,6 @@ char	*fix_to_return(char *str, int *last)
 		i++;
 	aux = malloc(sizeof(char) * (i + 2));
 	if (!aux)
-
 		return (NULL);
 	i = 0;
 	while ((str[i] != '\n') && (str[i] != '\0'))
@@ -49,36 +48,33 @@ char	*fix_to_return(char *str, int *last)
 	return (aux);
 }
 
-char	*get_the_read(int fd, int start, char *line)
+char	*get_the_read(int fd, char *line)
 {
 	char	*buffer;
 	char	*line2;
-	char	*aux;
 	size_t	apt;
 
-	if (start)
-		line2 = ft_strdup("");
-	else
-		line2 = line;
+	if (!line)
+		line = ft_strdup("");
 	buffer = malloc (sizeof(char) * BUFFER_SIZE);
 	if (!buffer)
 		return (NULL);
 	apt = BUFFER_SIZE;
-	while ((!contains(line2, '\n', 0)) && (apt == BUFFER_SIZE))
+	while ((!contains(line, '\n', 0)) && (apt == BUFFER_SIZE))
 	{
-		aux = line2;
+		line2 = line;
 		apt = read(fd, buffer, BUFFER_SIZE);
 		if ((int)apt == -1)
 		{
 			free_all_mem(buffer);
-			free_all_mem(aux);
+			free_all_mem(line2);
 			return (NULL);
 		}
-		line2 = ft_strjoin(line2, buffer, apt);
-		free_all_mem(aux);
+		line = ft_strjoin(line, buffer, apt);
+		free_all_mem(line2);
 	}
 	free_all_mem(buffer);
-	return (line2);
+	return (line);
 }
 
 char	*get_next_line(int fd)
@@ -94,12 +90,12 @@ char	*get_next_line(int fd)
 	{
 		aux = line;
 		line = ft_strdup(line + contains(line, '\n', 1) + 1);
-		line = get_the_read(fd, 0, line);
+		line = get_the_read(fd, line);
 		if (aux[0] != '\0')
 			free_all_mem(aux);
 	}
 	else
-		line = get_the_read(fd, 1, line);
+		line = get_the_read(fd, line);
 	last = 0;
 	result = fix_to_return(line, &last);
 	if (last)

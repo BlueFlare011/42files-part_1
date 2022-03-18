@@ -9,8 +9,8 @@ void leaks(void)
 int main(){
 	// atexit(leaks);
 	char *str;
-	int fd = open("file_tester.txt", O_RDONLY);
-	for (int i = 0; i < 1; i++)
+	int fd = open("file_manifiesto.txt", O_RDONLY);
+	for (int i = 0; i < 10; i++)
 	{
 		str = get_next_line(fd);
 		printf("%s", str);
