@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
+#include <stdio.h>
 void	free_all_mem(char *str)
 {
 	free (str);
@@ -23,13 +23,12 @@ char	*fix_to_return(char *str, int *last)
 	unsigned int	i;
 	char			*aux;
 
-	if ((!str) || (str[0] == '\0'))
-		return (NULL);
 	i = 0;
 	while ((str[i] != '\n') && (str[i] != '\0'))
 		i++;
 	aux = malloc(sizeof(char) * (i + 2));
 	if (!aux)
+
 		return (NULL);
 	i = 0;
 	while ((str[i] != '\n') && (str[i] != '\0'))
@@ -65,7 +64,11 @@ char	*get_the_read(int fd, int start, char *line)
 		aux = line2;
 		apt = read(fd, buffer, BUFFER_SIZE);
 		if ((int)apt == -1)
+		{
+			free_all_mem(buffer);
+			free_all_mem(aux);
 			return (NULL);
+		}
 		line2 = ft_strjoin(line2, buffer, apt);
 		free_all_mem(aux);
 	}
@@ -80,18 +83,24 @@ char	*get_next_line(int fd)
 	char		*result;
 	int			last;
 
-	if ((fd < 0) && (BUFFER_SIZE <= 0))
+	if ((fd < 0) || (BUFFER_SIZE <= 0))
 		return (NULL);
 	if (line)
 	{
 		aux = line;
 		line = ft_strdup(line + contains(line, '\n', 1) + 1);
 		line = get_the_read(fd, 0, line);
-		free_all_mem(aux);
+		if (aux[0] != '\0')
+			free_all_mem(aux);
 	}
 	else
 		line = get_the_read(fd, 1, line);
 	last = 0;
+	if (!line)
+		return (NULL);
+	if (line[0] == '\0'){
+		free(line);
+		return NULL;}
 	result = fix_to_return(line, &last);
 	if (last)
 	{

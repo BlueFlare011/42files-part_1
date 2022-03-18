@@ -7,12 +7,12 @@ void leaks(void)
 }
 
 int main(){
-	atexit(leaks);
+	// atexit(leaks);
 	char *str;
 	int fd = open("file_tester.txt", O_RDONLY);
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 5; i++)
 	{
-		str = get_next_line(-1);
+		str = get_next_line(fd);
 		printf("%s", str);
 		free(str);
 	}
