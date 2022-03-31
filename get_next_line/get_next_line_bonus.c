@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	free_all_mem(char *str)
 {
@@ -72,29 +72,29 @@ char	*get_the_read(int fd, char *line)
 
 char	*get_next_line(int fd)
 {
-	static char	*line;
+	static char	*line[MAX_FD];
 	char		*aux;
 	char		*result;
 	int			last;
 
 	if ((fd < 0) || (BUFFER_SIZE <= 0))
 		return (NULL);
-	if (line)
+	if (line[fd])
 	{
-		aux = line;
-		line = ft_strdup(line + contains(line, '\n', 1) + 1);
-		line = get_the_read(fd, line);
+		aux = line[fd];
+		line[fd] = ft_strdup(line[fd] + contains(line[fd], '\n', 1) + 1);
+		line[fd] = get_the_read(fd, line[fd]);
 		if (aux[0] != '\0')
 			free_all_mem(aux);
 	}
 	else
-		line = get_the_read(fd, line);
+		line[fd] = get_the_read(fd, line[fd]);
 	last = 0;
-	result = fix_to_return(line, &last);
+	result = fix_to_return(line[fd], &last);
 	if (last)
 	{
-		free(line);
-		line = NULL;
+		free(line[fd]);
+		line[fd] = NULL;
 	}
 	return (result);
 }

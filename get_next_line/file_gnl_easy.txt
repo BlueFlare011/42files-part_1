@@ -1,5 +1,0 @@
-Bueno esto es un fichero de prueba
-para probar que funciona el pto get_next_line
-asi que voy ha escribir 3 lineas mas
-y creo que sera sufiente para test basicos
-yeah perdonen kamehameha despues del tema del tetris viene el dragon ball rap
