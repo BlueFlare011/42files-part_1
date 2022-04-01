@@ -1,4 +1,6 @@
-SRCS	=	main.c
+SRCS	=	main.c\
+			window_settings.c\
+			move_control.c
 
 OBJS	=			$(SRCS:.c=.o)
 
@@ -8,7 +10,7 @@ RM		=			rm -f
 
 AR		=			ar rcs
 
-CFLAGS	=			-Wall -Werror -Wextra
+CFLAGS	=			-Wall -Werror -Wextra -g
 
 NAME	=			so_long
 
@@ -16,7 +18,7 @@ NAME	=			so_long
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 clean:
 	$(RM) $(OBJS) $(OBJSBONUS)

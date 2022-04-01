@@ -9,17 +9,29 @@
 # include "../Libft/libft.h"
 # include <mlx.h>
 
-enum {
-	ON_KEYPRESS = 2,
-	ON_KEYRELEASE = 3,
+enum
+{
+	KEY_UP = 13,
+	KEY_DOWN = 1,
+	KEY_LEFT = 0,
+	KEY_RIGHT = 2,
+	ESC = 53
 };
 
 typedef struct{
 	void	*mlx;
 	void	*mlx_win;
 	void	*img;
-	int		weight;
+	int		width;
 	int		height;
+	int		ness_x;
+	int		ness_y;
 }Vdm;
 
+int		ft_error();
+void	createWindow(Vdm *var);
+void	ft_move_up(Vdm *var);
+void	ft_move_down(Vdm *var);
+void	ft_move_left(Vdm *var);
+void	ft_move_right(Vdm *var);
 #endif
