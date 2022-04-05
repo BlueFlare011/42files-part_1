@@ -1,14 +1,15 @@
 #include "so_long.h"
 
 int main(int argc, char **argv){
-	Vdm	var;
+	Window	var;
+	Ness	ness;
 	
 	(void)argv;
 	(void)argc;
 	/*if (argc != 2)
 		return (ft_error());*/
 	var.mlx = mlx_init();
-	createWindow(&var);
+	createWindow(&var, &ness);
 	mlx_loop(var.mlx);
 	return (0);
 }

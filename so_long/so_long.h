@@ -7,6 +7,7 @@
 # include <fcntl.h>
 # include <string.h>
 # include "../Libft/libft.h"
+# include "get_next_line/get_next_line.h"
 # include <mlx.h>
 
 enum
@@ -18,20 +19,36 @@ enum
 	ESC = 53
 };
 
-typedef struct{
-	void	*mlx;
-	void	*mlx_win;
+enum
+{
+	CHAR = 'P',
+	FLOOR = '0',
+	HOLE = '1',
+	OBJ = 'C',
+	EXIT = 'E'
+};
+
+typedef struct 
+{
 	void	*img;
 	int		width;
 	int		height;
 	int		ness_x;
 	int		ness_y;
-}Vdm;
+}Ness;
+
+
+typedef struct{
+	void	*mlx;
+	void	*mlx_win;
+	int		size_x;
+	int		size_y;
+}Window;
 
 int		ft_error();
-void	createWindow(Vdm *var);
-void	ft_move_up(Vdm *var);
-void	ft_move_down(Vdm *var);
-void	ft_move_left(Vdm *var);
-void	ft_move_right(Vdm *var);
+void	createWindow(Window *var, Ness *ness);
+void	ft_move_up(Window *var, Ness *ness);
+void	ft_move_down(Window *var , Ness *ness);
+void	ft_move_left(Window *var , Ness *ness);
+void	ft_move_right(Window *var, Ness *ness);
 #endif
