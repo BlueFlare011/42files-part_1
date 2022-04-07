@@ -6,7 +6,6 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <string.h>
-# include "../Libft/libft.h"
 # include "get_next_line/get_next_line.h"
 # include <mlx.h>
 
@@ -28,27 +27,30 @@ enum
 	EXIT = 'E'
 };
 
-typedef struct 
-{
-	void	*img;
-	int		width;
-	int		height;
-	int		ness_x;
-	int		ness_y;
-}Ness;
-
-
 typedef struct{
 	void	*mlx;
-	void	*mlx_win;
+	void	*win;
 	int		size_x;
 	int		size_y;
-}Window;
 
-int		ft_error();
-void	createWindow(Window *var, Ness *ness);
-void	ft_move_up(Window *var, Ness *ness);
-void	ft_move_down(Window *var , Ness *ness);
-void	ft_move_left(Window *var , Ness *ness);
-void	ft_move_right(Window *var, Ness *ness);
+	void	*floor;
+	void	*object;
+	void	*stair;
+	void	*ness;
+	void	*hole;
+	int		width;
+	int		height;
+}T_Var;
+
+int		validMap(int argc, char **argv);
+int		key_control(int keycode, T_Var *var);
+void	createWindow(T_Var *var);
+void	ft_move_up(T_Var *var);
+void	ft_move_down(T_Var *var );
+void	ft_move_left(T_Var *var );
+void	ft_move_right(T_Var *var);
+char	*ft_strjoin(char const *s1, char const *s2);
+size_t	ft_strlen(const char *str);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+
 #endif

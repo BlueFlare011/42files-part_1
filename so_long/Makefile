@@ -1,6 +1,10 @@
-SRCS	=	main.c\
+SRCS	=	so_long.c\
 			window_settings.c\
-			move_control.c
+			move_control.c\
+			map_validator.c\
+			libutils.c\
+			get_next_line/get_next_line.c\
+			get_next_line/get_next_line_utils.c
 
 OBJS	=			$(SRCS:.c=.o)
 
@@ -16,7 +20,6 @@ NAME	=			so_long
 
 
 all: $(NAME)
-
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 

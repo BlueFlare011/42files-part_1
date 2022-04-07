@@ -1,25 +1,21 @@
 #include "so_long.h"
 
-void	ft_move_up(Window *var, Ness *ness)
+void	ft_move_up(T_Var *var)
 {
-	ness->ness_y = ness->ness_y + 60;
-	mlx_put_image_to_window(var->mlx, var->mlx_win, ness->img, ness->ness_x, ness->ness_y);
+	mlx_put_image_to_window(var->mlx, var->win, var->ness, 0, -80);
 }
 
-void	ft_move_down(Window *var, Ness *ness)
+void	ft_move_down(T_Var *var)
 {
-	ness->ness_y = ness->ness_y - 60;
-	mlx_put_image_to_window(var->mlx, var->mlx_win, ness->img, ness->ness_x, ness->ness_y);
+	mlx_put_image_to_window(var->mlx, var->win, var->ness, 0, 80);
 }
 
-void	ft_move_left(Window *var, Ness *ness)
+void	ft_move_left(T_Var *var)
 {
-	ness->ness_x = ness->ness_x - 60;
-	mlx_put_image_to_window(var->mlx, var->mlx_win, ness->img, ness->ness_x, ness->ness_y);
+	mlx_put_image_to_window(var->mlx, var->win, var->ness, -80, 0);
 }
 
-void	ft_move_right(Window *var, Ness *ness)
+void	ft_move_right(T_Var *var)
 {
-	ness->ness_x = ness->ness_x + 60;
-	mlx_put_image_to_window(var->mlx, var->mlx_win, ness->img, ness->ness_x, ness->ness_y);
+	mlx_put_image_to_window(var->mlx, var->win, var->ness, 80, 0);
 }
