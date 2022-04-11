@@ -3,6 +3,7 @@ SRCS	=	so_long.c\
 			move_control.c\
 			map_validator.c\
 			libutils.c\
+			images_settings.c\
 			get_next_line/get_next_line.c\
 			get_next_line/get_next_line_utils.c
 

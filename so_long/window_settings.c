@@ -1,18 +1,18 @@
 #include "so_long.h"
 
-void fillFloor(T_Var *var)
+void fill_map(T_Var *var)
 {
 	int i;
 	int j;
 
 	i = 0;
 	j = 0;
-	while (i < 15)
+	while (i < var->size_y)
 	{
 		j = 0;
-		while (j < 15)
+		while (j < var->size_x)
 		{
-			mlx_put_image_to_window(var->mlx, var->win, var->floor, i * 80, j * 80);
+			mlx_put_image_to_window(var->mlx, var->win, var->floor, j * 80, i * 80);
 			j++;
 		}
 		i++;
@@ -37,18 +37,17 @@ int	key_control(int keycode, T_Var *var)
 	return(0);
 }
 
-void createWindow(T_Var *var)
+void create_window(T_Var *var, T_Valid *valid)
 {
 	var->mlx = mlx_init();
-	var->win = mlx_new_window(var->mlx, 1200, 1200, "Map");
-	var->width = 80;
-	var->height = 80;
-	var->ness = mlx_xpm_file_to_image(var->mlx, "images/nessSprite.xpm",
-	&var->width, &var->height);
-	var->floor = mlx_xpm_file_to_image(var->mlx, "images/floorSprite.xpm",
-	&var->width, &var->height);
-	fillFloor(var);
+	var->size_x = valid->size_x;
+	var->size_y = valid->size_y;
+	var->win = mlx_new_window(var->mlx, var->size_x * 80, var->size_y * 80, "Map");
+	create_images(var);
+	fill_map(var);
 	mlx_put_image_to_window(var->mlx, var->win, var->ness, 0, 0);
-	mlx_key_hook(var->win, key_control, &var);
+	var->ness_x = 0;
+	var->ness_y = 0;
+	mlx_key_hook(var->win, key_control, var);
 	mlx_loop(var->mlx);
 }

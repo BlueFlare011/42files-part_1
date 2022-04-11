@@ -2,9 +2,13 @@
 
 int main(int argc, char **argv){
 	T_Var	var;
+	T_Valid	valid;
 	
-	if (!validMap(argc, argv))
+	if (!valid_map(argc, argv, &valid))
+	{
+		write(1, "Error\n", 6);
 		return (0);
-	createWindow(&var);
+	}
+	create_window(&var, &valid);
 	return (0);
 }

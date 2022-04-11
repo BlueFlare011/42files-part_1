@@ -35,16 +35,28 @@ typedef struct{
 
 	void	*floor;
 	void	*object;
-	void	*stair;
+	void	*exit;
 	void	*ness;
 	void	*hole;
 	int		width;
 	int		height;
+	int		ness_x;
+	int		ness_y;
 }T_Var;
 
-int		validMap(int argc, char **argv);
+typedef struct{
+	int	ness;
+	int	obj;
+	int	exit;
+	int	hole;
+	int	size_x;
+	int	size_y;
+	int isValid;
+}T_Valid;
+
+int		valid_map(int argc, char **argv, T_Valid *valid);
 int		key_control(int keycode, T_Var *var);
-void	createWindow(T_Var *var);
+void	create_window(T_Var *var, T_Valid *valid);
 void	ft_move_up(T_Var *var);
 void	ft_move_down(T_Var *var );
 void	ft_move_left(T_Var *var );
@@ -52,5 +64,7 @@ void	ft_move_right(T_Var *var);
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+void	create_images(T_Var *var);
+
 
 #endif
