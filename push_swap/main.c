@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 	if (error_manager(argv, argc))
 		return (NULL);
 	*/
-	fill_stack(&s1, array, lenght);
+//	fill_stack(&s1, array, lenght);
 	return (0);
 }
 /*

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtacunan <mtacunan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/07 22:04:36 by mtacunan          #+#    #+#             */
-/*   Updated: 2021/12/09 16:48:38 by mtacunan         ###   ########.fr       */
+/*   Created: 2021/12/09 17:10:19 by mtacunan          #+#    #+#             */
+/*   Updated: 2021/12/09 17:27:54 by mtacunan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int	ther_is_jump(char *buffer)
 {
@@ -83,36 +83,26 @@ char	*get_line(char *buffer)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*mem;
+	static char	*mem[65532];
 
 	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
-	if (!mem)
-		mem = ft_strdup("");
-	mem = get_buffer(mem, fd);
-	if (!mem)
+	if (!mem[fd])
+		mem[fd] = ft_strdup("");
+	mem[fd] = get_buffer(mem[fd], fd);
+	if (!mem[fd])
 		return (NULL);
-	if (!*mem)
+	if (!*mem[fd])
 	{
-		free(mem);
+		free(mem[fd]);
 		return (NULL);
 	}
-	line = get_line(mem);
+	line = get_line(mem[fd]);
 	if (!*line)
 	{
 		free (line);
 		return (NULL);
 	}
-	mem = get_mem(mem);
+	mem[fd] = get_mem(mem[fd]);
 	return (line);
 }
-// int main()
-// {
-// 	int fd = open("q",0);
-// 	int i = 0;
-// 	while(i < 4)
-// 	{
-// 		printf("%s", get_next_line(fd));	
-// 		i++;
-// 	}
-// }

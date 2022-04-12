@@ -37,11 +37,9 @@ int	key_control(int keycode, T_Var *var)
 	return(0);
 }
 
-void create_window(T_Var *var, T_Valid *valid)
+void create_window(T_Var *var)
 {
 	var->mlx = mlx_init();
-	var->size_x = valid->size_x;
-	var->size_y = valid->size_y;
 	var->win = mlx_new_window(var->mlx, var->size_x * 80, var->size_y * 80, "Map");
 	create_images(var);
 	fill_map(var);

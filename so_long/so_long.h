@@ -33,6 +33,7 @@ typedef struct{
 	int		size_x;
 	int		size_y;
 
+	char	**map;
 	void	*floor;
 	void	*object;
 	void	*exit;
@@ -54,14 +55,13 @@ typedef struct{
 	int isValid;
 }T_Valid;
 
-int		valid_map(int argc, char **argv, T_Valid *valid);
+int		valid_map(int argc, char **argv, T_Valid *valid, T_Var *var);
 int		key_control(int keycode, T_Var *var);
-void	create_window(T_Var *var, T_Valid *valid);
+void	create_window(T_Var *var);
 void	ft_move_up(T_Var *var);
 void	ft_move_down(T_Var *var );
 void	ft_move_left(T_Var *var );
 void	ft_move_right(T_Var *var);
-char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	create_images(T_Var *var);
