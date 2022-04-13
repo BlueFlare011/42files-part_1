@@ -3,116 +3,98 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtacunan <mtacunan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: socana-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/07 22:04:36 by mtacunan          #+#    #+#             */
-/*   Updated: 2021/12/09 16:48:38 by mtacunan         ###   ########.fr       */
+/*   Created: 2021/12/02 12:19:18 by socana-b          #+#    #+#             */
+/*   Updated: 2021/12/02 12:19:20 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ther_is_jump(char *buffer)
+void	free_all_mem(char *str)
 {
-	int	i;
+	free (str);
+	str = NULL;
+}
 
-	i = 0;
-	while (buffer[i])
+char	*fix_to_return(char *str, int *last)
+{
+	unsigned int	i;
+	char			*aux;
+
+	if ((!str) || (*str == '\0'))
 	{
-		if (buffer[i] == '\n')
-			return (1);
+		free_all_mem(str);
+		return (NULL);
+	}
+	i = contains(str, '\n', 1);
+	aux = malloc(sizeof(char) * (i + 2));
+	if (!aux)
+		return (NULL);
+	i = 0;
+	while ((str[i] != '\n') && (str[i] != '\0'))
+	{
+		aux[i] = str[i];
 		i++;
 	}
-	return (0);
+	if (str[i] == '\n')
+		aux[i++] = '\n';
+	else
+		*(last) = 1;
+	aux[i] = '\0';
+	return (aux);
 }
 
-char	*get_buffer(char *mem, int fd)
+char	*get_the_read(int fd, char *line)
 {
 	char	*buffer;
-	int		rd;
+	char	*line2;
+	int		apt;
 
-	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!line)
+		line = ft_strdup("");
+	buffer = malloc (sizeof(char) * BUFFER_SIZE);
 	if (!buffer)
 		return (NULL);
-	rd = 1;
-	while ((!mem || !ther_is_jump(mem)) && rd > 0)
+	while (!contains(line, '\n', 0))
 	{
-		rd = read(fd, buffer, BUFFER_SIZE);
-		if (mem)
-			buffer = ft_strjoin(buffer, mem);
-		if (!*buffer || rd == -1)
-		{
-			free (buffer);
-			free (mem);
-			return (NULL);
-		}
-		buffer[rd] = '\0';
-		mem = ft_strjoin(mem, buffer);
+		line2 = line;
+		apt = read(fd, buffer, BUFFER_SIZE);
+		if ((apt == 0) || (apt == -1))
+			break ;
+		line = ft_strjoin2(line, buffer, apt);
+		free_all_mem(line2);
 	}
-	free (buffer);
-	return (mem);
-}
-
-char	*get_mem(char *mem)
-{
-	int		start;
-	int		end;
-	char	*res;
-
-	if (!mem)
-		return (NULL);
-	start = size_malloc(mem) + 1;
-	end = ft_strlen(mem);
-	res = ft_substr(mem, start, end - start + 1);
-	free (mem);
-	return (res);
-}
-
-char	*get_line(char *buffer)
-{
-	char	*res;
-	int		len;
-
-	if (!buffer)
-		return (NULL);
-	len = size_malloc(buffer);
-	res = ft_substr(buffer, 0, len + 1);
-	return (res);
+	free_all_mem(buffer);
+	return (line);
 }
 
 char	*get_next_line(int fd)
 {
-	char		*line;
-	static char	*mem;
+	static char	*line;
+	char		*aux;
+	char		*result;
+	int			last;
 
-	if (BUFFER_SIZE <= 0 || fd < 0)
+	if ((fd < 0) || (BUFFER_SIZE <= 0))
 		return (NULL);
-	if (!mem)
-		mem = ft_strdup("");
-	mem = get_buffer(mem, fd);
-	if (!mem)
-		return (NULL);
-	if (!*mem)
+	if (line)
 	{
-		free(mem);
-		return (NULL);
+		aux = line;
+		line = ft_strdup(line + contains(line, '\n', 1) + 1);
+		line = get_the_read(fd, line);
+		if (aux[0] != '\0')
+			free_all_mem(aux);
 	}
-	line = get_line(mem);
-	if (!*line)
+	else
+		line = get_the_read(fd, line);
+	last = 0;
+	result = fix_to_return(line, &last);
+	if (last)
 	{
-		free (line);
-		return (NULL);
+		free(line);
+		line = NULL;
 	}
-	mem = get_mem(mem);
-	return (line);
+	return (result);
 }
-// int main()
-// {
-// 	int fd = open("q",0);
-// 	int i = 0;
-// 	while(i < 4)
-// 	{
-// 		printf("%s", get_next_line(fd));	
-// 		i++;
-// 	}
-// }

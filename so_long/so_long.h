@@ -28,12 +28,11 @@ enum
 };
 
 typedef struct{
+	char	**map;
 	void	*mlx;
 	void	*win;
 	int		size_x;
 	int		size_y;
-
-	char	**map;
 	void	*floor;
 	void	*object;
 	void	*exit;
@@ -50,8 +49,6 @@ typedef struct{
 	int	obj;
 	int	exit;
 	int	hole;
-	int	size_x;
-	int	size_y;
 	int isValid;
 }T_Valid;
 
@@ -65,6 +62,6 @@ void	ft_move_right(T_Var *var);
 size_t	ft_strlen(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	create_images(T_Var *var);
-
-
+char	**ft_split(char const *s, char c);
+char	*ft_strjoin(char const *s1, char const *s2);
 #endif

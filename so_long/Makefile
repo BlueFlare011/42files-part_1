@@ -1,11 +1,13 @@
 SRCS	=	so_long.c\
 			window_settings.c\
 			move_control.c\
-			map_validator.c\
-			libutils.c\
 			images_settings.c\
+			map_validator.c\
 			get_next_line/get_next_line.c\
-			get_next_line/get_next_line_utils.c
+			get_next_line/get_next_line_utils.c\
+			libutils/ft_strncmp.c\
+			libutils/ft_split.c\
+			libutils/ft_strjoin.c\
 
 OBJS	=			$(SRCS:.c=.o)
 
