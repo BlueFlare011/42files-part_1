@@ -27,7 +27,7 @@ enum
 	EXIT = 'E'
 };
 
-typedef struct{
+typedef struct s_var{
 	char	**map;
 	void	*mlx;
 	void	*win;
@@ -44,28 +44,32 @@ typedef struct{
 	int		ness_y;
 	int		num_obj;
 	int		exit_bool;
-}T_Var;
+	int		steps;
+}t_Var;
 
-typedef struct{
+typedef struct s_valid{
 	int	ness;
 	int	obj;
 	int	exit;
 	int	hole;
-	int isValid;
-}T_Valid;
+	int	is_valid;
+}t_Valid;
 
-int		valid_map(int argc, char **argv, T_Valid *valid, T_Var *var);
-int		key_control(int keycode, T_Var *var);
-void	create_window(T_Var *var);
-void	ft_move_up(T_Var *var);
-void	ft_move_down(T_Var *var );
-void	ft_move_left(T_Var *var );
-void	ft_move_right(T_Var *var);
+int		valid_map(int argc, char **argv, t_Valid *valid, t_Var *var);
+int		key_control(int keycode, t_Var *var);
+void	create_window(t_Var *var);
+void	ft_move_up(t_Var *var);
+void	ft_move_down(t_Var *var );
+void	ft_move_left(t_Var *var );
+void	ft_move_right(t_Var *var);
 size_t	ft_strlen(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-void	create_images(T_Var *var);
+void	create_images(t_Var *var);
 char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char const *s1, char const *s2);
-void	break_all(T_Var *var);
+void	break_all(t_Var *var);
+void	free_map(t_Var *var);
+void	put_map_in_window(t_Var *var);
+void	fill_floor(t_Var *var);
 
 #endif

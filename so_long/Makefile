@@ -1,7 +1,7 @@
 SRCS	=	so_long.c\
 			window_settings.c\
 			move_control.c\
-			images_settings.c\
+			so_long_utils.c\
 			map_validator.c\
 			get_next_line/get_next_line.c\
 			get_next_line/get_next_line_utils.c\
@@ -17,7 +17,7 @@ RM		=			rm -f
 
 AR		=			ar rcs
 
-CFLAGS	=			-Wall -Werror -Wextra -g
+CFLAGS	=			-Wall -Werror -Wextra
 
 NAME	=			so_long
 
