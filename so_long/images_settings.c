@@ -1,5 +1,15 @@
 #include "so_long.h"
 
+void break_all(T_Var *var)
+{
+	mlx_destroy_image(var->mlx, var->ness);
+	mlx_destroy_image(var->mlx, var->object);
+	mlx_destroy_image(var->mlx, var->hole);
+	mlx_destroy_image(var->mlx, var->floor);
+	mlx_destroy_image(var->mlx, var->exit);
+	mlx_clear_window(var->mlx, var->win);
+}
+
 void create_images(T_Var *var)
 {
 	var->width = 80;

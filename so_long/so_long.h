@@ -42,6 +42,8 @@ typedef struct{
 	int		height;
 	int		ness_x;
 	int		ness_y;
+	int		num_obj;
+	int		exit_bool;
 }T_Var;
 
 typedef struct{
@@ -64,4 +66,6 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	create_images(T_Var *var);
 char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char const *s1, char const *s2);
+void	break_all(T_Var *var);
+
 #endif

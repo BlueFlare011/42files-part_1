@@ -50,8 +50,7 @@ void put_map_in_window(T_Var *var)
 int	key_control(int keycode, T_Var *var)
 {
 	if (keycode == ESC){
-		mlx_destroy_image(var->mlx, var->ness);
-		mlx_clear_window(var->mlx, var->win);
+		break_all(var);
 		exit(1);
 	}
 	if (keycode == KEY_UP)
@@ -67,6 +66,7 @@ int	key_control(int keycode, T_Var *var)
 
 void create_window(T_Var *var)
 {
+	var->num_obj = 0;
 	var->mlx = mlx_init();
 	var->win = mlx_new_window(var->mlx, var->size_x * 80, var->size_y * 80, "Map");
 	create_images(var);
