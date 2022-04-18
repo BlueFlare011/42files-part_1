@@ -3,6 +3,7 @@ SRCS	=	so_long.c\
 			move_control.c\
 			so_long_utils.c\
 			map_validator.c\
+			map_validator_utils.c\
 			get_next_line/get_next_line.c\
 			get_next_line/get_next_line_utils.c\
 			libutils/ft_strncmp.c\
@@ -14,8 +15,6 @@ OBJS	=			$(SRCS:.c=.o)
 CC		=			gcc
 
 RM		=			rm -f
-
-AR		=			ar rcs
 
 CFLAGS	=			-Wall -Werror -Wextra
 
@@ -34,4 +33,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean bonus re
+.PHONY: all clean fclean re

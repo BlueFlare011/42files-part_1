@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   map_validator_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: socana-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 14:37:21 by socana-b          #+#    #+#             */
-/*   Updated: 2022/04/18 14:37:25 by socana-b         ###   ########.fr       */
+/*   Created: 2022/04/18 15:30:53 by socana-b          #+#    #+#             */
+/*   Updated: 2022/04/18 15:30:55 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
+char	*fill_line_map(t_Var *var, t_Valid *valid, int fd)
 {
-	t_Var	var;
-	t_Valid	valid;
+	char	*line;
+	char	*file;
+	char	*aux;
 
-	if (!valid_map(argc, argv, &valid, &var))
+	file = ft_strdup("");
+	line = get_next_line(fd);
+	while (line)
 	{
-		return (0);
+		if (line[0] == '\n')
+			valid->is_valid = 0;
+		aux = file;
+		file = ft_strjoin(file, line);
+		free(aux);
+		free(line);
+		line = get_next_line(fd);
+		var->size_y++;
 	}
-	var.exit_bool = valid.obj;
-	create_window(&var);
-	return (0);
+	free(line);
+	return (file);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: socana-b <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/18 14:54:38 by socana-b          #+#    #+#             */
+/*   Updated: 2022/04/18 14:54:40 by socana-b         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -59,8 +71,8 @@ int		valid_map(int argc, char **argv, t_Valid *valid, t_Var *var);
 int		key_control(int keycode, t_Var *var);
 void	create_window(t_Var *var);
 void	ft_move_up(t_Var *var);
-void	ft_move_down(t_Var *var );
-void	ft_move_left(t_Var *var );
+void	ft_move_down(t_Var *var);
+void	ft_move_left(t_Var *var);
 void	ft_move_right(t_Var *var);
 size_t	ft_strlen(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -68,8 +80,8 @@ void	create_images(t_Var *var);
 char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	break_all(t_Var *var);
-void	free_map(t_Var *var);
 void	put_map_in_window(t_Var *var);
-void	fill_floor(t_Var *var);
+void	free_map(t_Var *var);
+char	*fill_line_map(t_Var *var, t_Valid *valid, int fd);
 
 #endif

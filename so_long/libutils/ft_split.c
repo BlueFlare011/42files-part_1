@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: socana-b <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/18 15:02:53 by socana-b          #+#    #+#             */
+/*   Updated: 2022/04/18 15:02:55 by socana-b         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../so_long.h"
 
 static int	count(char const *s, char c)
@@ -65,7 +77,7 @@ static void	forge(char const *s, char c, char *m, int *j)
 	m[i] = '\0';
 }
 
-static void	*memfree(char **matrix, int	i)
+static void	*memfree(char **matrix, int i)
 {
 	while (i > -1)
 	{
