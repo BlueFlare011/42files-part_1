@@ -26,4 +26,8 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+so:
+	gcc -nostartfiles -fPIC $(FLAGS) $(SRCS)
+	gcc -nostartfiles -shared -o libftprintf.so $(OBJS)
+
+.PHONY: all clean fclean re so 

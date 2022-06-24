@@ -1,35 +1,64 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stacks_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: socana-b <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/24 13:50:29 by socana-b          #+#    #+#             */
+/*   Updated: 2022/06/24 13:50:33 by socana-b         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void fill_stack(T_Stack *s, int* nums, int length)
+void	add_stack(T_Stack *s, int num)
 {
 	T_Node	*new;
-	T_Node	*aux;
-	int		i;
 
-	i = 0;
-	while (i < length)
+	new = malloc(sizeof(T_Node));
+	if (!new)
+		return ;
+	new->num = num;
+	new->next = *s;
+	*s = new;
+	new->before = NULL;
+}
+
+int	is_repeat(T_Stack *s, int num)
+{
+	T_Node	*aux;
+	int		repeat;
+
+	aux = *s;
+	repeat = 0;
+	while (aux && !repeat)
 	{
-		new = (T_Node*)malloc(sizeof(T_Node));
-		if (!new)
-			return ;
-		new->num = nums[i];
-		new->next = (*s);
-		(*s) = new;
-		new->before = NULL;
-		if (new->next)
-		{
-			aux = new->next;
-			aux->before = new;
-		}
-		i++;
+		if (aux->num == num)
+			repeat = 1;
+		aux = aux->next;
+	}
+	return (repeat);
+}
+
+void	delete_stack(T_Stack *s)
+{
+	T_Node	*aux;
+
+	while (*s)
+	{
+		aux = *s;
+		(*s) = (*s)->next;
+		if (*s)
+			free(aux);
 	}
 }
 
-void printStack(T_Stack *s)
+void	print_stack(T_Stack *s)
 {
-	T_Node *aux;
-	aux = *s;
+	T_Node	*aux;
 
+	aux = *s;
 	printf("Del derecho\n");
 	while (aux->next)
 	{

@@ -1,9 +1,21 @@
-#include "push_swap.c"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_moves.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: socana-b <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/24 13:52:53 by socana-b          #+#    #+#             */
+/*   Updated: 2022/06/24 13:52:55 by socana-b         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void swap(T_Stack *s)
+#include "push_swap.h"
+
+void	swap(T_Stack *s)
 {
-	T_Node *aux;
-	
+	T_Node	*aux;
+
 	aux = (*s)->next;
 	aux->next->before = (*s);
 	(*s)->next = aux->next;
@@ -13,9 +25,9 @@ void swap(T_Stack *s)
 	(*s) = aux;
 }
 
-void push(T_Stack *s1, T_Stack *s2)
+void	push(T_Stack *s1, T_Stack *s2)
 {
-	T_Node *aux;
+	T_Node	*aux;
 
 	aux = (*s1);
 	(*s1) = aux->next;
@@ -26,10 +38,10 @@ void push(T_Stack *s1, T_Stack *s2)
 		aux->next->before = aux;
 }
 
-void rotate(T_Stack *s)
+void	rotate(T_Stack *s)
 {
-	T_Node *aux;
-	T_Node *iter;
+	T_Node	*aux;
+	T_Node	*iter;
 
 	aux = (*s);
 	aux->next->before = NULL;
@@ -42,9 +54,9 @@ void rotate(T_Stack *s)
 	iter->next = aux;
 }
 
-void reverse_rotate(T_Stack *s)
+void	reverse_rotate(T_Stack *s)
 {
-	T_Node *aux;
+	T_Node	*aux;
 
 	aux = (*s);
 	while (aux->next)

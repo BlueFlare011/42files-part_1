@@ -36,7 +36,7 @@ static long long int	atoi2(const char *str, long long int i)
 static long long int	space(const char *str, long long int i)
 {
 	while ((str[i] == ' ') || (str[i] == '\t') || (str[i] == '\n')
-		 || (str[i] == '\v') || (str[i] == '\f') || (str[i] == '\r'))
+		|| (str[i] == '\v') || (str[i] == '\f') || (str[i] == '\r'))
 		i++;
 	return (i);
 }
@@ -50,7 +50,7 @@ int	ft_atoi(const char *str)
 	i = 0;
 	s = 1;
 	if ((str[i] == ' ') || (str[i] == '\t') || (str[i] == '\n')
-		 || (str[i] == '\v') || (str[i] == '\f') || (str[i] == '\r'))
+		|| (str[i] == '\v') || (str[i] == '\f') || (str[i] == '\r'))
 		i = space(str, i);
 	if ((str[i] == '+') || (str[i] == '-'))
 	{

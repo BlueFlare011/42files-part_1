@@ -77,7 +77,7 @@ static void	forge(char const *s, char c, char *m, int *j)
 	m[i] = '\0';
 }
 
-static void	*memfree(char **matrix, int	i)
+static void	*memfree(char **matrix, int i)
 {
 	while (i > -1)
 	{

@@ -1,62 +1,52 @@
 #include "push_swap.h"
 
-int is_num(char *arg)
+static int fit_int(char *arg)
 {
-	unsigned int	i;
+	int	correct;
 
-	i = 0;
-	while (arg[i] != '\0')
-	{
-		if (!ft_isdigit(arg[i]))
-			return (0);
-		i++;
-	}
-	return (1);
+	correct = 1;
+	if ((arg[0] == '-') && (ft_strlen(arg) > 11))
+		correct = 0;
+	else if (ft_strlen(arg) > 10)
+		correct = 0;
+	//comprobar numericamente
+	return (correct);
 }
 
-int isnt_int(char *arg)
-{
-	if (ft_strlen(arg) > 11)
-		return (0);
-	return (1);
-}
-
-int is_repeat(char **args, int len)
+static int valid_num(char *arg)
 {
 	int	i;
-	int j;
+	int	flag;
 
 	i = 0;
-	j = 0;
-	while (i < len)
+	flag = arg[0] != '\0';
+	while (arg[i] && flag)
 	{
-		while (j < len)
-		{
-			if (ft_strlen(args[i]) == ft_strlen(args[j]))
-			{
-				if (ft_strncmp(args[i], args[j], ft_strlen(args[i])) == 0)
-					return (1);
-			}
-			j++;
-		}
+		if ((i == 0) && (arg[i] == '-'))
+			i++;
+		if (!ft_isalnum(arg[i]))
+			flag = 0;
 		i++;
 	}
-	return (0)
+	return (flag);
 }
 
-int error_manager(char **args, int len)
+int error_manager(char *arg, T_Stack *s)
 {
 	unsigned int	i;
+	int				num;
 
-	i = 1;
-	while (i < len)
+	i = 0;
+	if (!valid_num(arg) && !fit_int(arg))
 	{
-		if ((is_num(args[i]) || isnt_int(args[i])) && is_repeat(args, len))
-		{
-			ft_printf("Error\n");
-			return (1);
-		}
-		i++;
+		write(1, "Error: Un argmento no es un numero valido\n", 42);
+		return (0);
 	}
-	return (0);
+	num = ft_atoi(arg);
+	if (is_repeat(s, num))
+	{
+		write(1, "Error: hay un numero repetido\n", 30);
+		return (0);
+	}
+	return (1);
 }

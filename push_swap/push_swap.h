@@ -17,12 +17,15 @@ typedef struct Node
 
 typedef T_Node *T_Stack;
 
-int		error_manager(char **args, int len);
-void	printStack(T_Stack *s);
-void	fill_stack(T_Stack *s, int* nums, int length);
+int		error_manager(char *arg, T_Stack *s);
+void	print_stack(T_Stack *s);
+void	add_stack(T_Stack *s, int num);
+int		is_repeat(T_Stack *s, int num);
+void	delete_stack(T_Stack *s);
 void	swap(T_Stack *s);
 void	push(T_Stack *s1, T_Stack *s2);
 void	rotate(T_Stack *s);
 void	reverse_rotate(T_Stack *s);
+void	args_settings(char **argv, int argc, T_Stack *s);
 
 #endif
