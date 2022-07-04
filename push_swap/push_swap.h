@@ -8,24 +8,24 @@
 # include "ft_printf/ft_printf.h"
 
 
-typedef struct Node
+typedef struct node
 {
 	int num;
-	struct Node *next;
-	struct Node *before;
-}T_Node;
+	struct node *next;
+	struct node *before;
+}t_node;
 
-typedef T_Node *T_Stack;
+typedef t_node *t_stack;
 
-int		error_manager(char *arg, T_Stack *s);
-void	print_stack(T_Stack *s);
-void	add_stack(T_Stack *s, int num);
-int		is_repeat(T_Stack *s, int num);
-void	delete_stack(T_Stack *s);
-void	swap(T_Stack *s);
-void	push(T_Stack *s1, T_Stack *s2);
-void	rotate(T_Stack *s);
-void	reverse_rotate(T_Stack *s);
-void	args_settings(char **argv, int argc, T_Stack *s);
+int		error_manager(char **args);
+void	print_stack(t_stack *s); //Funcion auxiliar
+void	add_stack(t_stack *s, int num);
+int		is_repeat(t_stack *s, int num);
+void	delete_stack(t_stack *s);
+void	swap(t_stack *s);
+void	push(t_stack *s1, t_stack *s2);
+void	rotate(t_stack *s);
+void	reverse_rotate(t_stack *s);
+void	args_settings(char **argv, int argc, t_stack *s);
 
 #endif

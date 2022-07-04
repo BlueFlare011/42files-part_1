@@ -12,33 +12,17 @@
 
 #include "libft.h"
 
-static long long int	is_number(char c)
-{
-	if ((c >= '0') && (c <= '9'))
-		return (1);
-	else
-		return (0);
-}
-
 static long long int	atoi2(const char *str, long long int i)
 {
 	long long int	n;
 
 	n = 0;
-	while (is_number(str[i]))
+	while (ft_isdigit(str[i]))
 	{
 		n = (n * 10) + (long long int)str[i] - 48;
 		i++;
 	}
 	return (n);
-}
-
-static long long int	space(const char *str, long long int i)
-{
-	while ((str[i] == ' ') || (str[i] == '\t') || (str[i] == '\n')
-		 || (str[i] == '\v') || (str[i] == '\f') || (str[i] == '\r'))
-		i++;
-	return (i);
 }
 
 int	ft_atoi(const char *str)
@@ -49,9 +33,9 @@ int	ft_atoi(const char *str)
 
 	i = 0;
 	s = 1;
-	if ((str[i] == ' ') || (str[i] == '\t') || (str[i] == '\n')
-		 || (str[i] == '\v') || (str[i] == '\f') || (str[i] == '\r'))
-		i = space(str, i);
+	while ((str[i] == ' ') || (str[i] == '\t') || (str[i] == '\n')
+		|| (str[i] == '\v') || (str[i] == '\f') || (str[i] == '\r'))
+		i++;
 	if ((str[i] == '+') || (str[i] == '-'))
 	{
 		if (str[i] == '-')

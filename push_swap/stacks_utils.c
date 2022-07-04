@@ -12,22 +12,24 @@
 
 #include "push_swap.h"
 
-void	add_stack(T_Stack *s, int num)
+void	add_stack(t_stack *s, int num)
 {
-	T_Node	*new;
+	t_node	*new;
 
-	new = malloc(sizeof(T_Node));
+	new = malloc(sizeof(t_node));
 	if (!new)
 		return ;
 	new->num = num;
 	new->next = *s;
+	if (*s != NULL)
+		(*s)->before = new;
 	*s = new;
 	new->before = NULL;
 }
 
-int	is_repeat(T_Stack *s, int num)
+int	is_repeat(t_stack *s, int num)
 {
-	T_Node	*aux;
+	t_node	*aux;
 	int		repeat;
 
 	aux = *s;
@@ -41,9 +43,9 @@ int	is_repeat(T_Stack *s, int num)
 	return (repeat);
 }
 
-void	delete_stack(T_Stack *s)
+void	delete_stack(t_stack *s)
 {
-	T_Node	*aux;
+	t_node	*aux;
 
 	while (*s)
 	{
@@ -54,9 +56,9 @@ void	delete_stack(T_Stack *s)
 	}
 }
 
-void	print_stack(T_Stack *s)
+void	print_stack(t_stack *s)
 {
-	T_Node	*aux;
+	t_node	*aux;
 
 	aux = *s;
 	printf("Del derecho\n");

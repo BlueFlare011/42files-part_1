@@ -1,10 +1,16 @@
-NAME	=	push_swap
-
-SRCS	=	main.c\
+SRCS	=	Libft/ft_atoi.c\
+			Libft/ft_strlen.c\
+			Libft/ft_strdup.c\
+			Libft/ft_split.c\
+			Libft/ft_strjoin.c\
+			Libft/ft_strncmp.c\
+			Libft/ft_isdigit.c\
 			error.c\
-			stack_utils.c\
+			args_manager.c\
+			stacks_utils.c\
 			stack_moves.c\
-			push_swap.c
+			push_swap_utils.c\
+			push_swap.c\
 
 RM		=	rm -f
 
@@ -14,9 +20,11 @@ OBJS	=	$(SRCS:.c=.o)
 
 FLAGS	=	-Wall -Werror -Wextra
 
-all:	$(NAME)
+NAME	=	push_swap
+
+all: $(NAME)
 $(NAME): $(OBJS) 
-	$(CC) $(FLAGS) $(OBJS) $(NAME)
+	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	$(RM) $(OBJS)

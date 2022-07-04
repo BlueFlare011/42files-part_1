@@ -1,16 +1,23 @@
 #include "push_swap.h"
 
-static int fit_int(char *arg)
+static int	repeat(char **args)
 {
-	int	correct;
+	int	i;
+	int	j;
 
-	correct = 1;
-	if ((arg[0] == '-') && (ft_strlen(arg) > 11))
-		correct = 0;
-	else if (ft_strlen(arg) > 10)
-		correct = 0;
-	//comprobar numericamente
-	return (correct);
+	i = 0;
+	while (args[i])
+	{
+		j = i + 1;
+		while (args[j])
+		{
+			if (ft_strncmp(args[i], args[j], ft_strlen(args[i])) == 0)
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }
 
 static int valid_num(char *arg)
@@ -24,29 +31,31 @@ static int valid_num(char *arg)
 	{
 		if ((i == 0) && (arg[i] == '-'))
 			i++;
-		if (!ft_isalnum(arg[i]))
+		if (!ft_isdigit(arg[i]))
 			flag = 0;
 		i++;
 	}
 	return (flag);
 }
 
-int error_manager(char *arg, T_Stack *s)
+int error_manager(char **args)
 {
-	unsigned int	i;
-	int				num;
+	int	i;
 
 	i = 0;
-	if (!valid_num(arg) && !fit_int(arg))
+	while(args[i])
 	{
-		write(1, "Error: Un argmento no es un numero valido\n", 42);
-		return (0);
+		if (!valid_num(args[i]))
+		{
+			write(1, "Error: Un argmento no es un numero valido\n", 42);
+			return (0);
+		}
+		if ((ft_atoi(args[i]) == -1) && ft_strlen(args[i]) != 2)
+		{
+			write(1, "Error: Un argmento no es un numero valido\n", 42);
+			return (0);
+		}
+		i++;
 	}
-	num = ft_atoi(arg);
-	if (is_repeat(s, num))
-	{
-		write(1, "Error: hay un numero repetido\n", 30);
-		return (0);
-	}
-	return (1);
+	return (repeat(args));
 }
