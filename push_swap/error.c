@@ -4,7 +4,7 @@ static int	repeat(char **args)
 {
 	int	i;
 	int	j;
-
+	
 	i = 0;
 	while (args[i])
 	{
@@ -12,7 +12,10 @@ static int	repeat(char **args)
 		while (args[j])
 		{
 			if (ft_strncmp(args[i], args[j], ft_strlen(args[i])) == 0)
+			{
+				write(1, "Error: Existen numero repetidos\n", 32);
 				return (0);
+			}
 			j++;
 		}
 		i++;

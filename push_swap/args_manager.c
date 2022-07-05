@@ -29,7 +29,7 @@ void	delete_matrix(char **args)
 	int i;
 
 	i = 0;
-	while(args[i])
+	while(args[i] != NULL)
 	{
 		free(args[i]);
 		i++;
@@ -52,7 +52,7 @@ void	add_to_stack(char **args, t_stack *s)
 	}
 }
 
-void	args_settings(char **argv, int argc, t_stack *s)
+int	args_settings(char **argv, int argc, t_stack *s)
 {
 	char	**args;
 
@@ -61,8 +61,10 @@ void	args_settings(char **argv, int argc, t_stack *s)
 
 	if (error_manager(args)){
 		add_to_stack(args, s);
+		return (1);
 	}
 	else{
-		delete_matrix(argv);
+		delete_matrix(args);
+		return (0);
 	}
 }

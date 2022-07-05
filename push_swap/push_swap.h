@@ -26,6 +26,6 @@ void	swap(t_stack *s);
 void	push(t_stack *s1, t_stack *s2);
 void	rotate(t_stack *s);
 void	reverse_rotate(t_stack *s);
-void	args_settings(char **argv, int argc, t_stack *s);
+int	args_settings(char **argv, int argc, t_stack *s);
 
 #endif

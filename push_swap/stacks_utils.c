@@ -76,3 +76,31 @@ void	print_stack(t_stack *s)
 	}
 	printf("%d\n", aux->num);
 }
+
+void addStack(t_stack *s, int num)
+{
+	t_node *new;
+	
+	new = malloc(sizeof(t_node));
+	if (!new)
+		return ;
+	new->num = num;
+	new->before = NULL;
+	new->next = *s;
+	*s = new;
+}
+
+int isInStack(t_stack *s, int num)
+{
+	t_node *aux;
+	int equal = 0;
+	
+	aux = *s;
+	while(aux && !equal)
+	{
+		if (aux->num == num)
+			equal = 1;
+		aux = aux->next;
+	}
+	return (equal);
+}
