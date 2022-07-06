@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap.h" //Perfeccionar los movimientos
 
-void	swap(t_stack *s)
+void	swap(t_stack *s, char sn)
 {
 	t_node	*aux;
 
@@ -23,9 +23,10 @@ void	swap(t_stack *s)
 	aux->before = NULL;
 	(*s)->before = aux;
 	(*s) = aux;
+	
 }
 
-void	push(t_stack *s1, t_stack *s2)
+void	push(t_stack *s1, t_stack *s2, char sn)
 {
 	t_node	*aux;
 
@@ -38,7 +39,7 @@ void	push(t_stack *s1, t_stack *s2)
 		aux->next->before = aux;
 }
 
-void	rotate(t_stack *s)
+void	rotate(t_stack *s, char sn)
 {
 	t_node	*aux;
 	t_node	*iter;
@@ -54,7 +55,7 @@ void	rotate(t_stack *s)
 	iter->next = aux;
 }
 
-void	reverse_rotate(t_stack *s)
+void	reverse_rotate(t_stack *s, char sn)
 {
 	t_node	*aux;
 

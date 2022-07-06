@@ -47,20 +47,24 @@ void	add_to_stack(char **args, t_stack *s)
 	i--;
 	while (i >= 0)
 	{
-		add_stack(s, ft_atoi(args[i]));
+		add_stack(s, ft_atoi(args[i]), i);
 		i--;
 	}
 }
 
-int	args_settings(char **argv, int argc, t_stack *s)
+int	args_settings(char **argv, int argc, t_stack *s) //Hacerlo mas bonito -- Comprobar argumentos vacios
 {
 	char	**args;
 
 	args = create_matrix(argv, argc);
-	
-
 	if (error_manager(args)){
 		add_to_stack(args, s);
+		delete_matrix(args);
+		if (is_sorted(s))
+		{
+			write(1, "Error: Ya esta ordenado\n", 24);
+			return (0);
+		}
 		return (1);
 	}
 	else{

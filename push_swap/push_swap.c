@@ -2,25 +2,40 @@
 
 void	check_leaks(void)
 {
-	system("push_swap leaks");
+	system("leaks push_swap");
 }
 
-void crear_stack(t_stack *s1, t_stack *s2)
+void crear_stack(t_stack *a, t_stack *b)
 {
-	*s1 = NULL;
-	*s2 = NULL;
+	*a = NULL;
+	*b = NULL;
 }
 
 int main(int argc, char **argv)
 {
 	//atexit(check_leaks);
-	t_stack s1, s2;
+	t_stack a, b;
 
-	crear_stack(&s1, &s2);
-	if (args_settings(argv, argc, &s1))
+	if (argc != 1)
 	{
-		print_stack(&s1);
+		crear_stack(&a, &b);
+		if (args_settings(argv, argc, &a))
+		{
+			if (stack_lenght(&a) == 2)
+				swap(&a, 'a');
+			else if (stack_lenght(&a) == 3)
+				three_elements(&a, &b);
+			else if (stack_lenght(&a) == 4)
+				four_elements(&a, &b);
+			else if (stack_lenght(&a) == 5)
+				four_elements(&a, &b);
+			print_stack(&a);
+		}
+		delete_stack(&a);
 	}
-	delete_stack(&s1);
+	else
+		write(1, "Error: No hay argumentos, GILIPOLLAS\n", 37);
 	return (0);
 }
+
+//-2147483648

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	add_stack(t_stack *s, int num)
+void	add_stack(t_stack *s, int num, int pos)
 {
 	t_node	*new;
 
@@ -20,6 +20,7 @@ void	add_stack(t_stack *s, int num)
 	if (!new)
 		return ;
 	new->num = num;
+	new->pos = pos;
 	new->next = *s;
 	if (*s != NULL)
 		(*s)->before = new;
@@ -27,20 +28,19 @@ void	add_stack(t_stack *s, int num)
 	new->before = NULL;
 }
 
-int	is_repeat(t_stack *s, int num)
+int	stack_lenght(t_stack *s)
 {
-	t_node	*aux;
-	int		repeat;
+	t_node *aux;
+	int		i;
 
 	aux = *s;
-	repeat = 0;
-	while (aux && !repeat)
+	i = 0;
+	while (aux)
 	{
-		if (aux->num == num)
-			repeat = 1;
+		i++;
 		aux = aux->next;
 	}
-	return (repeat);
+	return (i);
 }
 
 void	delete_stack(t_stack *s)
@@ -51,8 +51,7 @@ void	delete_stack(t_stack *s)
 	{
 		aux = *s;
 		(*s) = (*s)->next;
-		if (*s)
-			free(aux);
+		free(aux);
 	}
 }
 
@@ -64,43 +63,31 @@ void	print_stack(t_stack *s)
 	printf("Del derecho\n");
 	while (aux->next)
 	{
-		printf("%d\n", aux->num);
+		printf("%d - %d\n", aux->num, aux->pos);
 		aux = aux->next;
 	}
-	printf("%d\n", aux->num);
+	printf("%d - %d\n", aux->num, aux->pos);/*
 	printf("Del reves\n");
 	while (aux != (*s))
 	{
 		printf("%d\n", aux->num);
 		aux = aux->before;
 	}
-	printf("%d\n", aux->num);
+	printf("%d\n", aux->num);*/
 }
 
-void addStack(t_stack *s, int num)
+int	is_sorted(t_stack *s)
 {
-	t_node *new;
-	
-	new = malloc(sizeof(t_node));
-	if (!new)
-		return ;
-	new->num = num;
-	new->before = NULL;
-	new->next = *s;
-	*s = new;
-}
-
-int isInStack(t_stack *s, int num)
-{
+	int	flag;
 	t_node *aux;
-	int equal = 0;
-	
-	aux = *s;
-	while(aux && !equal)
+
+	aux = (*s)->next;
+	flag = 1;
+	while (aux && flag)
 	{
-		if (aux->num == num)
-			equal = 1;
+		if (aux->num < aux->before->num)
+			flag = 0;
 		aux = aux->next;
 	}
-	return (equal);
+	return (flag);
 }
