@@ -16,25 +16,18 @@ int main(int argc, char **argv)
 	//atexit(check_leaks);
 	t_stack a, b;
 
-	if (argc != 1)
+	if (argc > 2)
 	{
 		crear_stack(&a, &b);
 		if (args_settings(argv, argc, &a))
 		{
-			if (stack_lenght(&a) == 2)
-				swap(&a, 'a');
-			else if (stack_lenght(&a) == 3)
-				three_elements(&a, &b);
-			else if (stack_lenght(&a) == 4)
-				four_elements(&a, &b);
-			else if (stack_lenght(&a) == 5)
-				four_elements(&a, &b);
+			
 			print_stack(&a);
 		}
 		delete_stack(&a);
 	}
 	else
-		write(1, "Error: No hay argumentos, GILIPOLLAS\n", 37);
+		write(1, "Error: No hay argumentos suficientes, GILIPOLLAS\n", 49);
 	return (0);
 }
 

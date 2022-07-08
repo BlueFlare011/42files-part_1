@@ -12,7 +12,7 @@
 
 #include "push_swap.h" //Perfeccionar los movimientos
 
-void	swap(t_stack *s, char sn)
+void	swap(t_stack *s)
 {
 	t_node	*aux;
 
@@ -26,7 +26,7 @@ void	swap(t_stack *s, char sn)
 	
 }
 
-void	push(t_stack *s1, t_stack *s2, char sn)
+void	push(t_stack *s1, t_stack *s2)
 {
 	t_node	*aux;
 
@@ -39,7 +39,7 @@ void	push(t_stack *s1, t_stack *s2, char sn)
 		aux->next->before = aux;
 }
 
-void	rotate(t_stack *s, char sn)
+void	rotate(t_stack *s)
 {
 	t_node	*aux;
 	t_node	*iter;
@@ -55,7 +55,7 @@ void	rotate(t_stack *s, char sn)
 	iter->next = aux;
 }
 
-void	reverse_rotate(t_stack *s, char sn)
+void	reverse_rotate(t_stack *s)
 {
 	t_node	*aux;
 
