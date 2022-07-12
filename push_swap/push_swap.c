@@ -21,7 +21,6 @@ int main(int argc, char **argv)
 		crear_stack(&a, &b);
 		if (args_settings(argv, argc, &a))
 		{
-			
 			print_stack(&a);
 		}
 		delete_stack(&a);
@@ -32,3 +31,5 @@ int main(int argc, char **argv)
 }
 
 //-2147483648
+//Existen numeros repetidos ./push_swap 9 4 23 41 ???
+// Puede haber 1 argumento con varios numero, el parche del main esta mal

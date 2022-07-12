@@ -58,22 +58,25 @@ void	delete_stack(t_stack *s)
 void	print_stack(t_stack *s)
 {
 	t_node	*aux;
-
-	aux = *s;
-	printf("Del derecho\n");
-	while (aux->next)
+	
+	if (*s)
 	{
-		printf("%d - %d\n", aux->num, aux->pos);
-		aux = aux->next;
-	}
-	printf("%d - %d\n", aux->num, aux->pos);/*
-	printf("Del reves\n");
-	while (aux != (*s))
-	{
-		printf("%d\n", aux->num);
-		aux = aux->before;
-	}
-	printf("%d\n", aux->num);*/
+		aux = *s;
+		printf("Del derecho\n");
+		while (aux->next)
+		{
+			printf("%d - %d\n", aux->num, aux->pos);
+			aux = aux->next;
+		}
+		printf("%d - %d\n", aux->num, aux->pos);/*
+		printf("Del reves\n");
+		while (aux != (*s))
+		{
+			printf("%d\n", aux->num);
+			aux = aux->before;
+		}
+		printf("%d\n", aux->num);*/
+	}	
 }
 
 int	is_sorted(t_stack *s)
