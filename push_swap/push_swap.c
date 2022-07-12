@@ -21,7 +21,9 @@ int main(int argc, char **argv)
 		crear_stack(&a, &b);
 		if (args_settings(argv, argc, &a))
 		{
+			algorithm(&a, &b);
 			print_stack(&a);
+			print_stack(&b);
 		}
 		delete_stack(&a);
 	}

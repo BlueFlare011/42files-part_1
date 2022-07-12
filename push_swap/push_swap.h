@@ -27,5 +27,15 @@ void	swap(t_stack *s);
 void	push(t_stack *s1, t_stack *s2);
 void	rotate(t_stack *s);
 void	reverse_rotate(t_stack *s);
+void	algorithm(t_stack *a, t_stack *b);
 
 #endif
+/*
+Apuntar maximo de instrucciones por numero de elemnetos:
+-
+-
+-
+-
+-
+-
+*/
