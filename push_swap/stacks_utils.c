@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	add_stack(t_stack *s, int num, int pos)
+void	add_stack(t_stack *s, int num)
 {
 	t_node	*new;
 
@@ -20,7 +20,6 @@ void	add_stack(t_stack *s, int num, int pos)
 	if (!new)
 		return ;
 	new->num = num;
-	new->pos = pos;
 	new->next = *s;
 	if (*s != NULL)
 		(*s)->before = new;
@@ -65,10 +64,10 @@ void	print_stack(t_stack *s)
 		printf("Del derecho\n");
 		while (aux->next)
 		{
-			printf("%d - %d\n", aux->num, aux->pos);
+			printf("%d\n", aux->num);
 			aux = aux->next;
 		}
-		printf("%d - %d\n", aux->num, aux->pos);/*
+		printf("%d\n", aux->num);/*
 		printf("Del reves\n");
 		while (aux != (*s))
 		{

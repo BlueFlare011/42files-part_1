@@ -47,7 +47,7 @@ void	add_to_stack(char **args, t_stack *s)
 	i--;
 	while (i >= 0)
 	{
-		add_stack(s, ft_atoi(args[i]), i);
+		add_stack(s, ft_atoi(args[i]));
 		i--;
 	}
 }
