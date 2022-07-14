@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_moves.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: socana-b <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 13:52:53 by socana-b          #+#    #+#             */
-/*   Updated: 2022/06/24 13:52:55 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/07/14 15:54:56 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,17 @@ void	reverse_rotate(t_stack *s)
 	(*s)->before = aux;
 	aux->next = (*s);
 	(*s) = aux;
+}
+
+void	stack_move(t_stack *a, t_stack *b, char *stk, int id_mv)
+{
+	if (id_mv == 0)
+		push(a, b);
+	else if (id_mv == 1)
+		swap(a);
+	else if (id_mv == 2)
+		rotate(a);
+	else if (id_mv == 3)
+		reverse_rotate(a);
+	write(1, stk, ft_strlen(stk) + 1);
 }

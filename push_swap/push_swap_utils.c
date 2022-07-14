@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void lenght_node(t_stack *a, int less, int *i, int *j)
+static void	lenght_node(t_stack *a, int less, int *i, int *j)
 {
 	t_node *aux = *a;
 	
@@ -16,7 +16,7 @@ void lenght_node(t_stack *a, int less, int *i, int *j)
 	}
 }
 
-t_node *less_than(t_stack *a)
+static t_node	*less_than(t_stack *a)
 {
 	t_node *aux;
 	t_node *less;
@@ -32,13 +32,13 @@ t_node *less_than(t_stack *a)
 	return (less);
 }
 
-void algorithm(t_stack *a, t_stack *b)
+void	algorithm(t_stack *a, t_stack *b)
 {
 	t_node	*less;
 	int		i;
 	int		j;
 	
-	while(stack_lenght(a) > 2)
+	while (stack_lenght(a) > 2)
 	{
 		i = 0;
 		j = 0;
@@ -46,27 +46,27 @@ void algorithm(t_stack *a, t_stack *b)
 		lenght_node(a, less->num, &i, &j);
 		if (i < j)
 		{
-			while(i > 0)
+			while (i > 0)
 			{
-				rotate(a);
+				stack_move(a, b, "ra\n", 2);
 				i--;
 			}
 		}
 		else
 		{
-			while(j > 0)
+			while (j > 0)
 			{
-				reverse_rotate(a);
+				stack_move(a, b, "rra\n", 3);
 				j--;
 			}
 		}
-		push(a, b);
+		stack_move(a, b, "pa\n", 0);
 	}
 	if ((*a)->num > (*a)->next->num)
-		swap(a);
+		stack_move(a, b, "sa\n", 1);
 	if (*b)
 	{
-		while(*b)
-			push(b, a);	
+		while (*b)
+			stack_move(b, a, "pb\n", 0);
 	}
 }

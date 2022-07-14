@@ -1,17 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/14 15:00:15 by socana-b          #+#    #+#             */
+/*   Updated: 2022/07/14 15:01:41 by socana-b         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	repeat(char **args)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	while (args[i])
 	{
 		j = i + 1;
 		while (args[j])
 		{
-			if (ft_strncmp(args[i], args[j], ft_strlen(args[i])) == 0)
+			if ((ft_strlen(args[i]) == ft_strlen(args[j]))
+				&& (ft_strncmp(args[i], args[j], ft_strlen(args[i])) == 0))
 			{
 				write(1, "Error: Existen numero repetidos\n", 32);
 				return (0);
@@ -23,7 +36,7 @@ static int	repeat(char **args)
 	return (1);
 }
 
-static int valid_num(char *arg)
+static int	valid_num(char *arg)
 {
 	int	i;
 	int	flag;
@@ -41,12 +54,12 @@ static int valid_num(char *arg)
 	return (flag);
 }
 
-int error_manager(char **args)
+int	error_manager(char **args)
 {
 	int	i;
 
 	i = 0;
-	while(args[i])
+	while (args[i])
 	{
 		if (!valid_num(args[i]))
 		{

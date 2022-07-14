@@ -75,7 +75,8 @@ void	print_stack(t_stack *s)
 			aux = aux->before;
 		}
 		printf("%d\n", aux->num);*/
-	}	
+	}else
+		write(1, "Pila vacia\n", 11);
 }
 
 int	is_sorted(t_stack *s)
