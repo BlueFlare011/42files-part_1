@@ -1,4 +1,7 @@
 SRCS	=	main.c
+			ft_printf/ft_printf.c
+			ft_printf/ft_hexabase.c
+			ft_printf/ft_hexapointer.c
 
 CC		=	gcc
 
