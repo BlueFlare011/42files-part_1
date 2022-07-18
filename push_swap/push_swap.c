@@ -22,6 +22,10 @@ int main(int argc, char **argv)
 		if (args_settings(argv, argc, &a))
 		{
 			algorithm(&a, &b);
+			printf("Pila ordenada:\n");
+			print_stack(&a);
+			write(1, "_________________________________________\n", 42);
+			print_stack(&b);
 		}
 		delete_stack(&a);
 	}

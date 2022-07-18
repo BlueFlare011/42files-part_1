@@ -1,7 +1,16 @@
-SRCS	=	main.c
-			ft_printf/ft_printf.c
-			ft_printf/ft_hexabase.c
-			ft_printf/ft_hexapointer.c
+SRCS	=	main.c\
+			error.c\
+			forking.c\
+			commands.c\
+			ft_printf/ft_printf.c\
+			ft_printf/ft_hexabase.c\
+			ft_printf/ft_hexapointer.c\
+			Libft/ft_strlen.c\
+			Libft/ft_strlcpy.c\
+			Libft/ft_strjoin.c\
+			Libft/ft_strncmp.c\
+			Libft/ft_substr.c\
+			Libft/ft_split.c\
 
 CC		=	gcc
 
