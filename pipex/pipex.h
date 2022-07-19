@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/19 23:37:26 by blueflare         #+#    #+#             */
+/*   Updated: 2022/07/19 23:42:40 by blueflare        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PIPEX_H
 # define PIPEX_H
 
@@ -21,4 +33,5 @@ typedef struct
 
 int		forking(char **argv, t_pipy	*my_var);
 void	manage_path(char **envp, t_pipy	*my_var);
+int		manage_error(t_pipy	*my_var, int argc, char **argv);
 #endif

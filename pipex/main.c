@@ -1,16 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/19 23:37:07 by blueflare         #+#    #+#             */
+/*   Updated: 2022/07/20 00:10:48 by blueflare        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
 int main(int argc, char **argv, char **envp)
 {
 	t_pipy	my_var;
 
-	if (argc == 5)
+	if (manage_error(&my_var, argc, argv))
 	{
-		my_var.infile = open(argv[1], O_RDONLY);
-		my_var.outfile = open(argv[4], O_RDWR);
 		my_var.command[0] = ft_split(argv[2], ' ');
 		my_var.command[1] = ft_split(argv[3], ' ');
 		manage_path(envp, &my_var);
+		if (!my_var.path_cmd[0] || !my_var.path_cmd[1])
+		{
+			write (1, "Error: Comandos invalidos\n", 26);
+			return (0);
+		}
 		forking(argv, &my_var);
 	}
 	else
