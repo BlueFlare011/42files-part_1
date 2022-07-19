@@ -1,6 +1,6 @@
 #include "pipex.h"
 
-char	*verify_commands(char **path, char *cmd) //path <-> cmd
+char	*verify_commands(char **path, char *cmd)
 {
 	char	*commnd;
 	int		i;
@@ -41,17 +41,17 @@ char	**create_path(char **envp)
 	return (all_directions);
 }
 
-void	manage_path(char **envp, char **cmd1, char **cmd2, char **add1, char **add2)
+void	manage_path(char **envp, t_pipy	*my_var)
 {
 	char	**path;
 	char	*bnry1;
 	char	*bnry2;
 
 	path = create_path(envp);
-	bnry1 = ft_strjoin("/", cmd1[0]);
-	bnry2 = ft_strjoin("/", cmd2[0]);
-	*add1 = verify_commands(path, bnry1);
-	*add2 = verify_commands(path, bnry2);
+	bnry1 = ft_strjoin("/", my_var->command[0][0]);
+	bnry2 = ft_strjoin("/", my_var->command[1][0]);
+	my_var->path_cmd[0] = verify_commands(path, bnry1);
+	my_var->path_cmd[1] = verify_commands(path, bnry2);
 	free(bnry1);
 	free(bnry2);
 }

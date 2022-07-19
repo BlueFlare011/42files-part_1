@@ -1,31 +1,29 @@
 #include "pipex.h"
 
-int forking(char **argv, char *rute1, char *rute2, char **cmd1, char **cmd2)
+int forking(char **argv, t_pipy	*my_var)
 {
 	int		fd_pipe[2];
-	int		infile;
-	int		outfile;
 	pid_t	process;
 
 	if (pipe(fd_pipe) == -1)
 		return (-1);
 	process = fork();
+	if (process == -1)
+		return (-1);
 	if (process == 0)
 	{
 		close(fd_pipe[0]);
-		infile = open(argv[1], O_RDONLY);
-		dup2(STDIN_FILENO, infile);
-		dup2(STDOUT_FILENO, fd_pipe[1]);
-		execve(rute1, cmd1, NULL);
+		dup2(my_var->infile, STDIN_FILENO);
+		dup2(fd_pipe[1], STDOUT_FILENO);
+		execve(my_var->path_cmd[0], my_var->command[0], NULL);
 		close(fd_pipe[1]);
 	}
 	else
 	{
 		close(fd_pipe[1]);
-		outfile = open(argv[4], O_WRONLY);
-		dup2(STDIN_FILENO,fd_pipe[0]);
-		dup2(STDOUT_FILENO, outfile);
-		execve(rute2, cmd2, NULL);
+		dup2(my_var->outfile, STDOUT_FILENO);
+		dup2(fd_pipe[0], STDIN_FILENO);
+		execve(my_var->path_cmd[1], my_var->command[1], NULL);
 		close(fd_pipe[0]);
 	}
 	close(fd_pipe[1]);
