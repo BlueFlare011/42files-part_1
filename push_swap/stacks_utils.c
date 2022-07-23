@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stacks_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: socana-b <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 13:50:29 by socana-b          #+#    #+#             */
-/*   Updated: 2022/06/24 13:50:33 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/07/23 20:11:59 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	add_stack(t_stack *s, int num)
 
 int	stack_lenght(t_stack *s)
 {
-	t_node *aux;
+	t_node	*aux;
 	int		i;
 
 	aux = *s;
@@ -57,7 +57,7 @@ void	delete_stack(t_stack *s)
 void	print_stack(t_stack *s)
 {
 	t_node	*aux;
-	
+
 	if (*s)
 	{
 		aux = *s;
@@ -67,22 +67,16 @@ void	print_stack(t_stack *s)
 			printf("%d\n", aux->num);
 			aux = aux->next;
 		}
-		printf("%d\n", aux->num);/*
-		printf("Del reves\n");
-		while (aux != (*s))
-		{
-			printf("%d\n", aux->num);
-			aux = aux->before;
-		}
-		printf("%d\n", aux->num);*/
-	}else
+		printf("%d\n", aux->num);
+	}
+	else
 		write(1, "Pila vacia\n", 11);
 }
 
 int	is_sorted(t_stack *s)
 {
-	int	flag;
-	t_node *aux;
+	int		flag;
+	t_node	*aux;
 
 	aux = (*s)->next;
 	flag = 1;

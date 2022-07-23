@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 13:52:53 by socana-b          #+#    #+#             */
-/*   Updated: 2022/07/18 11:45:35 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/07/23 20:10:35 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	swap(t_stack *s)
 void	push(t_stack *s1, t_stack *s2)
 {
 	t_node	*aux;
+
 	if (*s1)
 	{
 		aux = (*s1);
@@ -84,5 +85,5 @@ void	stack_move(t_stack *a, t_stack *b, char *stk, int id_mv)
 		rotate(a);
 	else if (id_mv == 3)
 		reverse_rotate(a);
-	write(1, stk, ft_strlen(stk) + 1);
+	write(1, stk, ft_strlen(stk));
 }

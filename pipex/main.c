@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 23:37:07 by blueflare         #+#    #+#             */
-/*   Updated: 2022/07/20 00:10:48 by blueflare        ###   ########.fr       */
+/*   Updated: 2022/07/23 16:33:43 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv, char **envp)
 {
 	t_pipy	my_var;
 
@@ -24,6 +24,8 @@ int main(int argc, char **argv, char **envp)
 		if (!my_var.path_cmd[0] || !my_var.path_cmd[1])
 		{
 			write (1, "Error: Comandos invalidos\n", 26);
+			close(my_var.infile);
+			close(my_var.outfile);
 			return (0);
 		}
 		forking(argv, &my_var);

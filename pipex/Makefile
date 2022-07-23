@@ -2,9 +2,6 @@ SRCS	=	main.c\
 			error.c\
 			forking.c\
 			commands.c\
-			ft_printf/ft_printf.c\
-			ft_printf/ft_hexabase.c\
-			ft_printf/ft_hexapointer.c\
 			Libft/ft_strlen.c\
 			Libft/ft_strlcpy.c\
 			Libft/ft_strjoin.c\

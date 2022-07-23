@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 23:37:26 by blueflare         #+#    #+#             */
-/*   Updated: 2022/07/19 23:42:40 by blueflare        ###   ########.fr       */
+/*   Updated: 2022/07/23 15:13:13 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,15 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <sys/wait.h>
-#include <string.h> //no apto
-#include <stdio.h> //no apto
-#include "Libft/libft.h"
-#include "ft_printf/ft_printf.h"
+# include "Libft/libft.h"
 
-typedef struct
+typedef struct pipy
 {
 	char	**command[2];
 	char	*path_cmd[2];
 	int		infile;
 	int		outfile;
 }t_pipy;
-
 
 int		forking(char **argv, t_pipy	*my_var);
 void	manage_path(char **envp, t_pipy	*my_var);

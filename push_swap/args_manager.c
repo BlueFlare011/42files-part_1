@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 15:01:55 by socana-b          #+#    #+#             */
-/*   Updated: 2022/07/14 15:05:36 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/07/23 20:05:26 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	empty_args(int argc, char **argv)
 	return (flag);
 }
 
-int	args_settings(char **argv, int argc, t_stack *s) //Hacerlo mas bonito
+int	args_settings(char **argv, int argc, t_stack *s)
 {
 	char	**args;
 

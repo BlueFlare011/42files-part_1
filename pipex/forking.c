@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   forking.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 23:37:31 by blueflare         #+#    #+#             */
-/*   Updated: 2022/07/20 00:20:03 by blueflare        ###   ########.fr       */
+/*   Updated: 2022/07/23 15:11:01 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	child(t_pipy *my_var, char **argv, int *fd_pipe)
 	close(fd_pipe[1]);
 }
 
-int forking(char **argv, t_pipy	*my_var)
+int	forking(char **argv, t_pipy	*my_var)
 {
 	int		fd_pipe[2];
 	pid_t	process;
@@ -44,8 +44,8 @@ int forking(char **argv, t_pipy	*my_var)
 		child(my_var, argv, fd_pipe);
 	else
 		parent(my_var, argv, fd_pipe);
+	close(fd_pipe[0]);
 	close(fd_pipe[1]);
-	close(fd_pipe[2]);
 	waitpid(process, NULL, 0);
 	return (1);
 }
