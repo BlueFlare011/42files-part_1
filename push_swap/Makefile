@@ -23,7 +23,9 @@ BNS_SRC	=	Libft/ft_atoi.c\
 			bonus/args_manager.c\
 			bonus/error.c\
 			bonus/stacks_utils.c\
-			bonus/sort_stack.c
+			bonus/sort_stack.c\
+			bonus/stack_moves.c\
+			bonus/stack_moves2.c\
 
 RM		=	rm -f
 

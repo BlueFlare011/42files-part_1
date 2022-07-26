@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_bonus.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 20:13:11 by socana-b          #+#    #+#             */
-/*   Updated: 2022/07/26 15:09:05 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/07/26 16:49:05 by blueflare        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,14 @@ void	add_stack(t_stack *s, int num);
 int		stack_lenght(t_stack *s);
 void	delete_stack(t_stack *s);
 int		is_sorted(t_stack *s);
-void	stack_move(t_stack *a, t_stack *b, char *stk, int id_mv);
+void	swap(t_stack *s);
+void	push(t_stack *s1, t_stack *s2);
+void	rotate(t_stack *s);
+void	reverse_rotate(t_stack *s);
 void	super_swap(t_stack *a, t_stack *b);
 void	re_rotate(t_stack *a, t_stack *b);
 void	re_reverse_rotate(t_stack *a, t_stack *b);
-void	algorithm(t_stack *a, t_stack *b);
 void	sort_stack(t_stack *a, t_stack *b, char **moves);
+
 
 #endif

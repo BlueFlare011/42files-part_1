@@ -33,6 +33,7 @@ int	check_moves(char **moves)
 		if (!valid_move(moves[i]))
 			valid = 0;
 		i++;
+		
 	}
 	return (valid);
 }
@@ -78,7 +79,13 @@ int	main(int argc, char **argv)
 		{
 			moves = read_moves();
 			if (check_moves(moves))
+			{
 				sort_stack(&a, &b, moves);
+				if (is_sorted(&a))
+					write(1, "OK\n", 3);
+				else
+					write(1, "KO\n", 3);
+			}
 			else
 				write(2, "Error\n", 6);
 		}
