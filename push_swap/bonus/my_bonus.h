@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_bonus.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 20:13:11 by socana-b          #+#    #+#             */
-/*   Updated: 2022/07/24 19:04:21 by blueflare        ###   ########.fr       */
+/*   Updated: 2022/07/26 15:09:05 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ void	super_swap(t_stack *a, t_stack *b);
 void	re_rotate(t_stack *a, t_stack *b);
 void	re_reverse_rotate(t_stack *a, t_stack *b);
 void	algorithm(t_stack *a, t_stack *b);
+void	sort_stack(t_stack *a, t_stack *b, char **moves);
 
 #endif
