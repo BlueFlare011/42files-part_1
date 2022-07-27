@@ -45,14 +45,15 @@ char	**read_moves(void)
 	char	*scan_in;
 
 	move_line = ft_strdup("");
-	scan_in = malloc(sizeof(char) * 1);
+	scan_in = (char *)malloc(sizeof(char) * 1);
 	if (!move_line || !scan_in)
 		return (NULL);
 	while (1)
 	{
 		aux = move_line;
-		if (!read(0, scan_in, 1))
+		if (!read(0, scan_in, 1)) //Peta en linux
 			break ;
+		printf("%s", scan_in);
 		move_line = ft_strjoin(move_line, scan_in);
 		free(aux);
 	}
