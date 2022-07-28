@@ -6,11 +6,33 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 23:37:07 by blueflare         #+#    #+#             */
-/*   Updated: 2022/07/28 15:14:34 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/07/28 17:28:49 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	free_all_mem(t_pipy *my_var)
+{
+	int	i;
+
+	i = 0;
+	free(my_var->path_cmd[0]);
+	free(my_var->path_cmd[1]);
+	while (my_var->command[0][i])
+	{
+		free(my_var->command[0][i]);
+		i++;
+	}
+	i = 0;
+	while (my_var->command[1][i])
+	{
+		free(my_var->command[1][i]);
+		i++;
+	}
+	free(my_var->command[0]);
+	free(my_var->command[1]);
+}
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -28,7 +50,8 @@ int	main(int argc, char **argv, char **envp)
 			close(my_var.outfile);
 			return (0);
 		}
-		forking(argv, &my_var);
+		if (forking(argv, &my_var) == -1)
+			write (1, "Error: El Pipe no ha funcionado\n", 32);
 	}
 	else
 		write(1, "Error: El numero de argumentos no es valido\n", 44);
@@ -36,3 +59,5 @@ int	main(int argc, char **argv, char **envp)
 	close(my_var.outfile);
 	return (0);
 }
+
+// system("leaks pipex");

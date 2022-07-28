@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:10:30 by socana-b          #+#    #+#             */
-/*   Updated: 2022/07/23 16:35:33 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/07/28 17:02:20 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	manage_path(char **envp, t_pipy	*my_var)
 	char	**path;
 	char	*bnry1;
 	char	*bnry2;
+	int		i;
 
 	path = create_path(envp);
 	bnry1 = ft_strjoin("/", my_var->command[0][0]);
@@ -66,4 +67,11 @@ void	manage_path(char **envp, t_pipy	*my_var)
 	my_var->path_cmd[1] = verify_commands(path, bnry2);
 	free(bnry1);
 	free(bnry2);
+	i = 0;
+	while (path[i])
+	{
+		free(path[i]);
+		i++;
+	}
+	free(path);
 }
