@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   args_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 15:01:55 by socana-b          #+#    #+#             */
-/*   Updated: 2022/07/24 19:09:30 by blueflare        ###   ########.fr       */
+/*   Updated: 2022/07/28 13:59:59 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,8 @@ int	args_settings(char **argv, int argc, t_stack *s)
 		{
 			add_to_stack(args, s);
 			delete_matrix(args);
-			if (is_sorted(s))
-			{
-				write(2, "Error\n", 6);
-				return (0);
-			}
-			return (1);
+			if (!is_sorted(s))
+				return (1);
 		}
 		else
 		{

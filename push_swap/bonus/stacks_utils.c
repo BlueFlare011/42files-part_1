@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stacks_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 13:50:29 by socana-b          #+#    #+#             */
-/*   Updated: 2022/07/24 19:13:17 by blueflare        ###   ########.fr       */
+/*   Updated: 2022/07/28 14:01:07 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,24 @@ int	stack_lenght(t_stack *s)
 	return (i);
 }
 
-void	delete_stack(t_stack *s)
+void	delete_all(t_stack *s, char **moves)
 {
 	t_node	*aux;
+	int		i;
 
+	i = 0;
 	while (*s)
 	{
 		aux = *s;
 		(*s) = (*s)->next;
 		free(aux);
+	}/*
+	while (moves[i])
+	{
+		free(moves[i]);
+		i++;
 	}
+	free(moves);*/
 }
 
 void	print_stack(t_stack *s)

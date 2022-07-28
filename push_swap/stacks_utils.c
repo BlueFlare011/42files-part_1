@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 13:50:29 by socana-b          #+#    #+#             */
-/*   Updated: 2022/07/23 20:11:59 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/07/28 12:53:06 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,14 @@ void	delete_stack(t_stack *s)
 {
 	t_node	*aux;
 
-	while (*s)
+	if (*s)
 	{
-		aux = *s;
-		(*s) = (*s)->next;
-		free(aux);
+		while (*s)
+		{
+			aux = *s;
+			(*s) = (*s)->next;
+			free(aux);
+		}
 	}
 }
 

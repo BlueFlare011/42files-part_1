@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 20:07:23 by socana-b          #+#    #+#             */
-/*   Updated: 2022/07/23 20:09:30 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/07/28 13:28:17 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	main(int argc, char **argv)
 			print_stack(&b);*/
 		}
 		delete_stack(&a);
+		delete_stack(&b);
 	}
 	return (0);
 }

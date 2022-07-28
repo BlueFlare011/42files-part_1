@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 20:05:55 by socana-b          #+#    #+#             */
-/*   Updated: 2022/07/23 20:07:09 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/07/28 13:27:24 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,23 @@ static t_node	*less_than(t_stack *a)
 	return (less);
 }
 
-void	algorithm2(t_stack *a, t_stack *b, int i, int j)
+static t_node	*more_than(t_stack *a)
+{
+	t_node	*aux;
+	t_node	*biggest;
+
+	aux = *a;
+	biggest = *a;
+	while (aux)
+	{
+		if (aux->num > biggest->num)
+			biggest = aux;
+		aux = aux->next;
+	}
+	return (biggest);
+}
+
+static void	algorithm2(t_stack *a, t_stack *b, int i, int j)
 {
 	if (i < j)
 	{
@@ -65,13 +81,29 @@ void	algorithm2(t_stack *a, t_stack *b, int i, int j)
 	}
 }
 
+static void	algorithm_for_3(t_stack *a, t_stack *b)
+{
+	t_node *biggest;
+
+	if (!is_sorted(a))
+	{
+		biggest = more_than(a);
+		if (!biggest->before)
+			stack_move(a, b, "ra\n", 2);
+		if (biggest->before && biggest->next)
+			stack_move(a, b, "rra\n", 3);
+		if ((*a)->num > (*a)->next->num)
+			stack_move(a, b, "sa\n", 1);
+	}
+}
+
 void	algorithm(t_stack *a, t_stack *b)
 {
 	t_node	*less;
 	int		i;
 	int		j;
 
-	while (stack_lenght(a) > 2 && !is_sorted(a))
+	while (stack_lenght(a) > 3 && !is_sorted(a))
 	{
 		i = 0;
 		j = 0;
@@ -81,8 +113,7 @@ void	algorithm(t_stack *a, t_stack *b)
 		if (!is_sorted(a))
 			stack_move(a, b, "pb\n", 0);
 	}
-	if ((*a)->num > (*a)->next->num)
-		stack_move(a, b, "sa\n", 1);
+	algorithm_for_3(a, b);
 	if (*b)
 	{
 		while (*b)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   my_checker.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/28 12:47:46 by socana-b          #+#    #+#             */
+/*   Updated: 2022/07/28 12:47:59 by socana-b         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "my_bonus.h"
 
 int	valid_move(char *move)
@@ -33,7 +45,6 @@ int	check_moves(char **moves)
 		if (!valid_move(moves[i]))
 			valid = 0;
 		i++;
-		
 	}
 	return (valid);
 }
@@ -51,9 +62,8 @@ char	**read_moves(void)
 	while (1)
 	{
 		aux = move_line;
-		if (!read(0, scan_in, 1)) //Peta en linux
+		if (!read(0, scan_in, 1))
 			break ;
-		printf("%s", scan_in);
 		move_line = ft_strjoin(move_line, scan_in);
 		free(aux);
 	}
@@ -90,7 +100,7 @@ int	main(int argc, char **argv)
 			else
 				write(2, "Error\n", 6);
 		}
-		delete_stack(&a);
+		delete_all(&a, moves);
 	}
 	return (0);
 }
