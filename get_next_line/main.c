@@ -4,10 +4,13 @@
 int main()
 {
 	int fd = open("pollyana.txt", O_RDONLY);
+	char *line;
 	
 	for (int i = 0; i < 10; i++)
 	{
-		printf("%s", get_next_line(fd));
+		line = get_next_line(fd);
+		printf("%s", line);
+		free(line);
 	}
 	close(fd);
 	return (0);

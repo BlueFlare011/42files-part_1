@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   forking.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 23:37:31 by blueflare         #+#    #+#             */
-/*   Updated: 2022/07/28 17:23:07 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/01 12:34:21 by blueflare        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	parent(t_pipy *my_var, char **argv, int *fd_pipe)
 {
 	close(fd_pipe[1]);
-	dup2(my_var->outfile, STDOUT_FILENO);
 	dup2(fd_pipe[0], STDIN_FILENO);
+	dup2(my_var->outfile, STDOUT_FILENO);
 	execve(my_var->path_cmd[1], my_var->command[1], NULL);
 	close(fd_pipe[0]);
 }

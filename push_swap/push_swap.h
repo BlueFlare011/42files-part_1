@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 20:09:51 by socana-b          #+#    #+#             */
-/*   Updated: 2022/07/23 20:09:51 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/01 12:15:47 by blueflare        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,15 @@ void	super_swap(t_stack *a, t_stack *b);
 void	re_rotate(t_stack *a, t_stack *b);
 void	re_reverse_rotate(t_stack *a, t_stack *b);
 void	algorithm(t_stack *a, t_stack *b);
+void	lenght_node(t_stack *a, int less, int *i, int *j);
+t_node	*less_than(t_stack *a);
+t_node	*more_than(t_stack *a);
 
 #endif
 /*
 Apuntar maximo de instrucciones por numero de elemnetos:
 - 3 elem = 2 o 3 moves
-- 5 elem = 10 moves
-- 10 elem
--
+- 5 elem = 12 moves
 - 100 elem = 700 moves
 - 500 elem = 5500 moves
 */
