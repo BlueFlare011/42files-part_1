@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 23:37:31 by blueflare         #+#    #+#             */
-/*   Updated: 2022/08/03 16:20:03 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/03 20:10:02 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	child_in(t_pipy *my_var, int *fd_pipe)
 		write(2, "Error: No se ha podido ejecutar el primer comando\n", 50);
 }
 
-int	forking(char **argv, t_pipy	*my_var)
+int	forking(t_pipy	*my_var)
 {
 	int		fd_pipe[2];
 	pid_t	process_1;

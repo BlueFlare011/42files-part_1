@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 23:37:26 by blueflare         #+#    #+#             */
-/*   Updated: 2022/08/03 17:19:36 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/03 20:10:21 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct pipy
 	int		outfile;
 }t_pipy;
 
-int		forking(char **argv, t_pipy	*my_var);
+int		forking(t_pipy	*my_var);
 int		manage_path(char **envp, t_pipy	*my_var);
 int		manage_error(t_pipy	*my_var, int argc, char **argv);
 #endif

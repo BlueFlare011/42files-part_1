@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 23:37:07 by blueflare         #+#    #+#             */
-/*   Updated: 2022/08/03 17:07:47 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/03 20:10:47 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	main(int argc, char **argv, char **envp)
 			close(my_var.outfile);
 			return (0);
 		}
-		if (forking(argv, &my_var) == -1)
+		if (forking(&my_var) == -1)
 			write (1, "Error: El Pipe no ha funcionado\n", 32);
 		free_all_mem(&my_var);
 	}
