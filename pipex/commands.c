@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:10:30 by socana-b          #+#    #+#             */
-/*   Updated: 2022/07/28 17:02:20 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/03 17:03:26 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ char	**create_path(char **envp)
 	char	**all_directions;
 
 	i = 0;
+	all_directions = NULL;
 	path = NULL;
 	while (envp[i] && !path)
 	{
@@ -48,12 +49,13 @@ char	**create_path(char **envp)
 			path = ft_substr(envp[i], 5, ft_strlen(envp[i]));
 		i++;
 	}
-	all_directions = ft_split(path, ':');
+	if (path)
+		all_directions = ft_split(path, ':');
 	free(path);
 	return (all_directions);
 }
 
-void	manage_path(char **envp, t_pipy	*my_var)
+int	manage_path(char **envp, t_pipy	*my_var)
 {
 	char	**path;
 	char	*bnry1;
@@ -61,17 +63,22 @@ void	manage_path(char **envp, t_pipy	*my_var)
 	int		i;
 
 	path = create_path(envp);
-	bnry1 = ft_strjoin("/", my_var->command[0][0]);
-	bnry2 = ft_strjoin("/", my_var->command[1][0]);
-	my_var->path_cmd[0] = verify_commands(path, bnry1);
-	my_var->path_cmd[1] = verify_commands(path, bnry2);
-	free(bnry1);
-	free(bnry2);
-	i = 0;
-	while (path[i])
+	if (path)
 	{
-		free(path[i]);
-		i++;
+		bnry1 = ft_strjoin("/", my_var->command[0][0]);
+		bnry2 = ft_strjoin("/", my_var->command[1][0]);
+		my_var->path_cmd[0] = verify_commands(path, bnry1);
+		my_var->path_cmd[1] = verify_commands(path, bnry2);
+		i = 0;
+		while (path[i])
+		{
+			free(path[i]);
+			i++;
+		}
+		free(path);
+		free(bnry1);
+		free(bnry2);
+		return (0);
 	}
-	free(path);
+	return (1);
 }

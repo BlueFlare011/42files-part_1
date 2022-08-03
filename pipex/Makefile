@@ -20,8 +20,8 @@ NAME	=	pipex
 RM		=	rm -f
 
 all: $(NAME)
-$(NAME): $(OBJS) 
-	$(CC) $(FLAGS) -g $(OBJS) -o $(NAME) 
+$(NAME): $(OBJS)
+	$(CC) $(FLAGS) $(OBJS) -o $(NAME) 
 
 clean:
 	$(RM) $(OBJS)
