@@ -16,7 +16,7 @@ RM		=	rm -f
 all: $(NAME)
 $(NAME): $(OBJS)
 	@make -C Libft
-	$(CC) $(CFLAGS) $(OBJS) Libft/libft.a -o $(NAME)
+	$(CC) $(CFLAGS) -g $(OBJS) Libft/libft.a -o $(NAME)
 
 clean:
 	$(RM) $(OBJS)

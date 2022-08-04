@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: socana-b <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 11:14:06 by socana-b          #+#    #+#             */
-/*   Updated: 2021/08/18 11:14:07 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/04 11:06:29 by blueflare        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,12 @@ static int	cmpst(const char *str, const char *find,
 unsigned long int i, size_t len)
 {
 	int	j;
-	int	k;
 	int	aux;
 
 	j = 0;
 	aux = 1;
 	if ((find[j] == str[i]) && (i <= (len - 1)))
 	{
-		k = i;
 		while ((aux) && find[j] && (i <= (len - 1)))
 		{
 			if (find[j] != str[i])
