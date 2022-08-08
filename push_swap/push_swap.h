@@ -6,7 +6,7 @@
 /*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 20:09:51 by socana-b          #+#    #+#             */
-/*   Updated: 2022/08/01 12:15:47 by blueflare        ###   ########.fr       */
+/*   Updated: 2022/08/08 10:37:12 by blueflare        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ void	stack_move(t_stack *a, t_stack *b, char *stk, int id_mv);
 void	super_swap(t_stack *a, t_stack *b);
 void	re_rotate(t_stack *a, t_stack *b);
 void	re_reverse_rotate(t_stack *a, t_stack *b);
-void	algorithm(t_stack *a, t_stack *b);
 void	lenght_node(t_stack *a, int less, int *i, int *j);
 t_node	*less_than(t_stack *a);
 t_node	*more_than(t_stack *a);
-
+void	algorithm(t_stack *a, t_stack *b); //Normal
+void	mirror(t_stack *a, t_stack *b); //Mirror
 #endif
 /*
 Apuntar maximo de instrucciones por numero de elemnetos:

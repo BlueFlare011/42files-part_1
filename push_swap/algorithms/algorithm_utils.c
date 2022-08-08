@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	lenght_node(t_stack *a, int less, int *i, int *j)
 {

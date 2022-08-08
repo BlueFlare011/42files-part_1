@@ -9,8 +9,9 @@ SRCS	=	Libft/ft_atoi.c\
 			args_manager.c\
 			stacks_utils.c\
 			stack_moves.c\
-			algorithm.c\
-			algorithm_utils.c\
+			algorithms/normal_sort.c\
+			algorithms/algorithm_utils.c\
+			algorithms/mirror.c\
 			push_swap.c\
 
 BNS_SRC	=	Libft/ft_atoi.c\
