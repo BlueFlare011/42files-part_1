@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 23:37:31 by blueflare         #+#    #+#             */
-/*   Updated: 2022/08/03 20:10:02 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/09 10:20:51 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	child_out(t_pipy *my_var, int *fd_pipe)
 	dup2(my_var->outfile, STDOUT_FILENO);
 	close(fd_pipe[0]);
 	if (execve(my_var->path_cmd[1], my_var->command[1], NULL) == -1)
-		write(2, "Error: No se ha podido ejecutar el segundo comando\n", 51);
+		perror("Error: ");
 }
 
 void	child_in(t_pipy *my_var, int *fd_pipe)
@@ -29,7 +29,7 @@ void	child_in(t_pipy *my_var, int *fd_pipe)
 	dup2(fd_pipe[1], STDOUT_FILENO);
 	close(fd_pipe[1]);
 	if (execve(my_var->path_cmd[0], my_var->command[0], NULL) == -1)
-		write(2, "Error: No se ha podido ejecutar el primer comando\n", 50);
+		perror("Error: ");
 }
 
 int	forking(t_pipy	*my_var)

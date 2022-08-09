@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 23:37:07 by blueflare         #+#    #+#             */
-/*   Updated: 2022/08/04 17:20:39 by blueflare        ###   ########.fr       */
+/*   Updated: 2022/08/09 11:02:50 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ int	main(int argc, char **argv, char **envp)
 		if (manage_path(envp, &my_var)
 			|| !my_var.path_cmd[0] || !my_var.path_cmd[1])
 		{
-			write (1, "Error: Comandos invalidos\n", 26);
+			write (2, "Error: Invalid commands\n", 26);
 			free_all_mem(&my_var);
 			close(my_var.infile);
 			close(my_var.outfile);
 			return (0);
 		}
 		if (forking(&my_var) == -1)
-			write (1, "Error: El Pipe no ha funcionado\n", 32);
+			perror("Error: ");
 		free_all_mem(&my_var);
 	}
 	close(my_var.infile);

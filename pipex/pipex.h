@@ -6,13 +6,14 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 23:37:26 by blueflare         #+#    #+#             */
-/*   Updated: 2022/08/03 20:10:21 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/09 09:22:23 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
+# include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
