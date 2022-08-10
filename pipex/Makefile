@@ -1,6 +1,7 @@
 SRCS	=	main.c\
 			error.c\
 			forking.c\
+			utils.c\
 			commands.c\
 
 CC		=	gcc

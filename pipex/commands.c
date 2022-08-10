@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:10:30 by socana-b          #+#    #+#             */
-/*   Updated: 2022/08/09 10:17:29 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/10 13:59:38 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,11 @@ char	**create_path(char **envp)
 			path = ft_substr(envp[i], 5, ft_strlen(envp[i]));
 		i++;
 	}
-	if (path)
+	if (path && path[0] != '\0')
+	{
 		all_directions = ft_split(path, ':');
-	free(path);
+		free(path);
+	}
 	return (all_directions);
 }
 

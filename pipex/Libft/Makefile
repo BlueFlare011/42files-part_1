@@ -76,8 +76,4 @@ bonus: $(OBJSBONUS)
 
 re: fclean all
 
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
-	gcc -nostartfiles -shared -o libft.so $(OBJS)
-
-.PHONY: all clean fclean bonus re so 
+.PHONY: all clean fclean bonus re
