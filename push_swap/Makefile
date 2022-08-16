@@ -9,6 +9,7 @@ SRCS	=	Libft/ft_atoi.c\
 			args_manager.c\
 			stacks_utils.c\
 			stack_moves.c\
+			stack_moves2.c\
 			algorithms/normal_sort.c\
 			algorithms/algorithm_utils.c\
 			algorithms/mirror.c\
@@ -37,7 +38,7 @@ OBJS	=	$(SRCS:.c=.o)
 
 BNS_OBJ	=	$(BNS_SRC:.c=.o)
 
-FLAGS	=	-Wall -Werror -Wextra
+CFLAGS	=	-Wall -Werror -Wextra
 
 NAME	=	push_swap
 
@@ -45,11 +46,11 @@ BONUS	=	bonus/checker
 
 all: $(NAME)
 $(NAME): $(OBJS) 
-	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 bonus: $(BONUS)
 $(BONUS): $(BNS_OBJ)
-	$(CC) $(FLAGS) $(BNS_OBJ) -o $(BONUS)
+	$(CC) $(CFLAGS) $(BNS_OBJ) -o $(BONUS)
 
 clean:
 	$(RM) $(OBJS)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algorithm_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/16 16:04:15 by socana-b          #+#    #+#             */
+/*   Updated: 2022/08/16 16:34:09 by socana-b         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 void	lenght_node(t_stack *a, int less, int *i, int *j)
@@ -77,11 +89,36 @@ t_node	*mid_node(t_stack *a)
 		min = 0;
 		max = 0;
 		minmax_nodes(aux->num, a, &min, &max);
-		printf("%d - %d\n", min, max);
 		if (min - max >= -1 && min - max <= 1)
-			return(aux);
+			return (aux);
 		aux = aux->next;
 	}
-	write(1, "Algo ha ido mal\n", 16);
 	return (NULL);
+}
+
+void	move_num_up(t_stack *a, t_stack *b, int to_up)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	lenght_node(a, to_up, &i, &j);
+	printf("%d - %d\n", i, j);
+	if (i < j)
+	{
+		while (i > 0)
+		{
+			stack_move(a, b, "ra\n", 2);
+			i--;
+		}
+	}
+	else
+	{
+		while (j > 0)
+		{
+			stack_move(a, b, "rra\n", 3);
+			j--;
+		}
+	}
 }

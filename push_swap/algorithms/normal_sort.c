@@ -12,29 +12,9 @@
 
 #include "../push_swap.h"
 
-static void	algorithm2(t_stack *a, t_stack *b, int i, int j)
-{
-	if (i < j)
-	{
-		while (i > 0)
-		{
-			stack_move(a, b, "ra\n", 2);
-			i--;
-		}
-	}
-	else
-	{
-		while (j > 0)
-		{
-			stack_move(a, b, "rra\n", 3);
-			j--;
-		}
-	}
-}
-
 static void	algorithm_for_3(t_stack *a, t_stack *b)
 {
-	t_node *biggest;
+	t_node	*biggest;
 
 	if (!is_sorted(a))
 	{
@@ -51,16 +31,11 @@ static void	algorithm_for_3(t_stack *a, t_stack *b)
 void	algorithm(t_stack *a, t_stack *b)
 {
 	t_node	*less;
-	int		i;
-	int		j;
 
 	while (stack_lenght(a) > 3 && !is_sorted(a))
 	{
-		i = 0;
-		j = 0;
 		less = less_than(a);
-		lenght_node(a, less->num, &i, &j);
-		algorithm2(a, b, i, j);
+		move_num_up(a, b, less->num);
 		if (!is_sorted(a))
 			stack_move(a, b, "pb\n", 0);
 	}

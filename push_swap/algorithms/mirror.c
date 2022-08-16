@@ -3,52 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   mirror.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 17:39:08 by blueflare         #+#    #+#             */
-/*   Updated: 2022/08/08 10:41:06 by blueflare        ###   ########.fr       */
+/*   Updated: 2022/08/16 16:34:51 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	algorithm2(t_stack *a, t_stack *b, int i, int j)
-{
-	if (i < j)
-	{
-		while (i > 0)
-		{
-			stack_move(a, b, "ra\n", 2);
-			i--;
-		}
-	}
-	else
-	{
-		while (j > 0)
-		{
-			stack_move(a, b, "rra\n", 3);
-			j--;
-		}
-	}
-}
-
 void	mirror(t_stack *a, t_stack *b)
 {
-	t_node	*less;
-	int		i;
-	int		j;
-	int		length;
-	
-	length = stack_lenght(a)/2;
+	t_node	*aux;
+	t_node	*mid;
 
-	while (stack_lenght(a) > length && !is_sorted(a))
+	aux = *a;
+	mid = mid_node(a);
+	while (aux)
 	{
-		i = 0;
-		j = 0;
-		less = less_than(a);
-		lenght_node(a, less->num, &i, &j);
-		algorithm2(a, b, i, j);
-		if (!is_sorted(a))
+		if (aux->num < mid->num)
+		{
+			move_num_up(a, b, aux->num);
 			stack_move(a, b, "pb\n", 0);
+			aux = *a;
+		}
+		else
+			aux = aux->next;
 	}
+	write(1, "Sub-algoritmo\n", 14);
+	move_num_up(a, b, 7);
+	move_num_up(b, a, -6);
 }

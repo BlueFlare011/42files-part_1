@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 20:09:51 by socana-b          #+#    #+#             */
-/*   Updated: 2022/08/09 12:48:16 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/16 15:51:28 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,34 @@ typedef struct node
 
 typedef t_node	*t_stack;
 
+// Parcheo
 int		error_manager(char **args);
 int		args_settings(char **argv, int argc, t_stack *s);
+// Funciones para pila
 void	print_stack(t_stack *s); //Funcion auxiliar
 void	add_stack(t_stack *s, int num);
 int		stack_lenght(t_stack *s);
 void	delete_stack(t_stack *s);
 int		is_sorted(t_stack *s);
+//Moviminetos del stack
 void	stack_move(t_stack *a, t_stack *b, char *stk, int id_mv);
-void	super_swap(t_stack *a, t_stack *b);
-void	re_rotate(t_stack *a, t_stack *b);
-void	re_reverse_rotate(t_stack *a, t_stack *b);
+void	push(t_stack *s1, t_stack *s2);		//id 0
+void	swap(t_stack *s);					//id 1
+void	rotate(t_stack *s);					//id 2
+void	reverse_rotate(t_stack *s);			//id 3
+void	super_swap(t_stack *a, t_stack *b);	//id 4
+void	re_rotate(t_stack *a, t_stack *b);	//id 5
+void	re_reverse_rotate(t_stack *a, t_stack *b); //id 6
+//Funciones para algoritmo
+void	algorithm(t_stack *a, t_stack *b); //Normal
+void	mirror(t_stack *a, t_stack *b); //Mirror
 void	lenght_node(t_stack *a, int less, int *i, int *j);
 t_node	*less_than(t_stack *a);
 t_node	*more_than(t_stack *a);
 t_node	*mid_node(t_stack *a);
-void	algorithm(t_stack *a, t_stack *b); //Normal
-void	mirror(t_stack *a, t_stack *b); //Mirror
+void	move_num_up(t_stack *a, t_stack *b, int to_up);
 #endif
+
 /*
 Apuntar maximo de instrucciones por numero de elemnetos:
 - 3 elem = 2 o 3 moves

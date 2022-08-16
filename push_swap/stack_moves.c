@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 13:52:53 by socana-b          #+#    #+#             */
-/*   Updated: 2022/08/09 13:44:38 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/16 15:45:09 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,11 @@ void	stack_move(t_stack *a, t_stack *b, char *stk, int id_mv)
 		rotate(a);
 	else if (id_mv == 3)
 		reverse_rotate(a);
+	else if (id_mv == 4)
+		super_swap(a, b);
+	else if (id_mv == 5)
+		re_rotate(a, b);
+	else if (id_mv == 6)
+		re_reverse_rotate(a, b);
 	write(1, stk, ft_strlen(stk));
 }
