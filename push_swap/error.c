@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 15:00:15 by socana-b          #+#    #+#             */
-/*   Updated: 2022/07/14 15:01:41 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/22 14:10:00 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	repeat(char **args)
 			if ((ft_strlen(args[i]) == ft_strlen(args[j]))
 				&& (ft_strncmp(args[i], args[j], ft_strlen(args[i])) == 0))
 			{
-				write(1, "Error: Existen numero repetidos\n", 32);
+				write(1, "Error\n", 6);
 				return (0);
 			}
 			j++;
@@ -63,12 +63,12 @@ int	error_manager(char **args)
 	{
 		if (!valid_num(args[i]))
 		{
-			write(1, "Error: Un argmento no es un numero valido\n", 42);
+			write(1, "Error\n", 6);
 			return (0);
 		}
 		if ((ft_atoi(args[i]) == -1) && ft_strlen(args[i]) != 2)
 		{
-			write(1, "Error: Un argmento no es un numero valido\n", 42);
+			write(1, "Error\n", 6);
 			return (0);
 		}
 		i++;

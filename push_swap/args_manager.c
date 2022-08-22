@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 15:01:55 by socana-b          #+#    #+#             */
-/*   Updated: 2022/07/23 20:05:26 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/22 14:10:18 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	empty_args(int argc, char **argv)
 		i++;
 	}
 	if (flag == 1)
-		write(1, "Error: Al menos un argumento esta vacio\n", 40);
+		write(1, "Error\n", 6);
 	return (flag);
 }
 
@@ -94,10 +94,7 @@ int	args_settings(char **argv, int argc, t_stack *s)
 			add_to_stack(args, s);
 			delete_matrix(args);
 			if (is_sorted(s))
-			{
-				write(1, "Error: Ya esta ordenado\n", 24);
 				return (0);
-			}
 			return (1);
 		}
 		else

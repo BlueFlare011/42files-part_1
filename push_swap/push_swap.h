@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 20:09:51 by socana-b          #+#    #+#             */
-/*   Updated: 2022/08/16 15:51:28 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/22 18:47:13 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,10 @@ void	re_reverse_rotate(t_stack *a, t_stack *b); //id 6
 //Funciones para algoritmo
 void	algorithm(t_stack *a, t_stack *b); //Normal
 void	mirror(t_stack *a, t_stack *b); //Mirror
-void	lenght_node(t_stack *a, int less, int *i, int *j);
-t_node	*less_than(t_stack *a);
-t_node	*more_than(t_stack *a);
+void	shitty_sort(t_stack *s);	//Shitty
+void	lenght_node(t_node *a, int num, int *i, int *j);
+t_node	*less_than(t_stack *a, int limit);
+t_node	*greater_than(t_stack *a, int limit);
 t_node	*mid_node(t_stack *a);
 void	move_num_up(t_stack *a, t_stack *b, int to_up);
 #endif

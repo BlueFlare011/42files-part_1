@@ -18,7 +18,7 @@ static void	algorithm_for_3(t_stack *a, t_stack *b)
 
 	if (!is_sorted(a))
 	{
-		biggest = more_than(a);
+		biggest = greater_than(a, 0);
 		if (!biggest->before)
 			stack_move(a, b, "ra\n", 2);
 		if (biggest->before && biggest->next)
@@ -34,7 +34,7 @@ void	algorithm(t_stack *a, t_stack *b)
 
 	while (stack_lenght(a) > 3 && !is_sorted(a))
 	{
-		less = less_than(a);
+		less = less_than(a, 0);
 		move_num_up(a, b, less->num);
 		if (!is_sorted(a))
 			stack_move(a, b, "pb\n", 0);

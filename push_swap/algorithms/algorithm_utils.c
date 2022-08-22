@@ -6,18 +6,18 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 16:04:15 by socana-b          #+#    #+#             */
-/*   Updated: 2022/08/16 16:34:09 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/22 18:48:13 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	lenght_node(t_stack *a, int less, int *i, int *j)
+void	lenght_node(t_node *a, int num, int *i, int *j) //Esto hay que cambiar en todo
 {
 	t_node	*aux;
 
-	aux = *a;
-	while (aux->num != less)
+	aux = a;
+	while (aux->num != num)
 	{
 		(*i) = (*i) + 1;
 		aux = aux->next;
@@ -29,13 +29,18 @@ void	lenght_node(t_stack *a, int less, int *i, int *j)
 	}
 }
 
-t_node	*less_than(t_stack *a)
+t_node	*less_than(t_stack *a, int limit)
 {
 	t_node	*aux;
 	t_node	*less;
 
 	aux = *a;
-	less = *a;
+	while (limit > 0)
+	{
+		aux = aux->next;
+		limit--;
+	}
+	less = aux;
 	while (aux)
 	{
 		if (aux->num < less->num)
@@ -45,13 +50,18 @@ t_node	*less_than(t_stack *a)
 	return (less);
 }
 
-t_node	*more_than(t_stack *a)
+t_node	*greater_than(t_stack *a, int limit)
 {
 	t_node	*aux;
 	t_node	*biggest;
 
 	aux = *a;
-	biggest = *a;
+	while (limit > 0)
+	{
+		aux = aux->next;
+		limit--;
+	}
+	biggest = aux;
 	while (aux)
 	{
 		if (aux->num > biggest->num)
@@ -103,8 +113,7 @@ void	move_num_up(t_stack *a, t_stack *b, int to_up)
 
 	i = 0;
 	j = 0;
-	lenght_node(a, to_up, &i, &j);
-	printf("%d - %d\n", i, j);
+	lenght_node(*a, to_up, &i, &j);
 	if (i < j)
 	{
 		while (i > 0)
