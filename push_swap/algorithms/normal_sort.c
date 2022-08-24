@@ -40,9 +40,6 @@ void	algorithm(t_stack *a, t_stack *b)
 			stack_move(a, b, "pb\n", 0);
 	}
 	algorithm_for_3(a, b);
-	if (*b)
-	{
-		while (*b)
+	while (*b)
 			stack_move(b, a, "pa\n", 0);
-	}
 }

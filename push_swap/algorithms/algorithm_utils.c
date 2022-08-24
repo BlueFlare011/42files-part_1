@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 16:04:15 by socana-b          #+#    #+#             */
-/*   Updated: 2022/08/22 18:48:13 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/24 12:20:44 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ void	move_num_up(t_stack *a, t_stack *b, int to_up)
 	i = 0;
 	j = 0;
 	lenght_node(*a, to_up, &i, &j);
+	//printf("=%d= %d - %d\n", to_up, i, j);
 	if (i < j)
 	{
 		while (i > 0)
