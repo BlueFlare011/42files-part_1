@@ -54,11 +54,12 @@ $(BONUS): $(BNS_OBJ)
 	$(CC) $(CFLAGS) $(BNS_OBJ) -o $(BONUS)
 
 clean:
-	$(RM) $(OBJS)
+	@$(RM) $(OBJS)
 
 fclean: clean
 	$(RM) $(NAME)
 
+#soñar es gratis
 fclean_bonus: 
 	$(RM) $(BNS_OBJ) $(BONUS)
 

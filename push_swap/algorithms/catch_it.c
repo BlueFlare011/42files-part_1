@@ -38,20 +38,38 @@ void	sort_a(t_stack *a, t_stack *b)
 	}
 }
 
+t_node	*over_sized(t_stack *a, t_node *aux, int b)
+{
+	t_node	*less;
+	t_node	*greater;
+
+	greater = greater_than(a, 0);
+	less = less_than(a, 0);
+	if (b > greater->num || b < less->num)
+		return (less);
+	return (aux);
+}
+
 void	catch(t_stack *a, t_stack *b)
 {
 	int		num_b;
 	t_node	*aux;
-	
+	t_node	*last;
+
 	while (*b)
 	{
-		aux = (*a)->next;
+		aux = (*a);
+		last = *a;
 		num_b = (*b)->num;
-		while (aux->next && !(aux->before->num > num_b && aux->num < num_b)) /*Arreglar esta vaina*/
+		while (last)
+			last = last->next;
+		if (aux->num < num_b)
 		{
-			if (aux->num > aux->before->num)
+			while (aux && !(aux->before->num < num_b && aux->num > num_b))
 				aux = aux->next;
 		}
+		write(1, "holi\n", 5);
+		over_sized(a, aux, num_b);
 		move_num_up(a, NULL, aux->num);
 		stack_move(b, a, "pa\n", 0);
 	}

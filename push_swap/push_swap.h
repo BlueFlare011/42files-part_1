@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 20:09:51 by socana-b          #+#    #+#             */
-/*   Updated: 2022/08/24 09:47:51 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/25 21:03:47 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@
 
 typedef struct node
 {
-	int			num;
-	struct node	*next;
-	struct node	*before;
+	int				num;
+	unsigned int	id;
+	struct node		*next;
+	struct node		*before;
 }t_node;
 
 typedef t_node	*t_stack;
@@ -36,6 +37,7 @@ void	add_stack(t_stack *s, int num);
 int		stack_lenght(t_stack *s);
 void	delete_stack(t_stack *s);
 int		is_sorted(t_stack *s);
+void	set_id(t_stack *a);
 //Moviminetos del stack
 void	stack_move(t_stack *a, t_stack *b, char *stk, int id_mv);
 void	push(t_stack *s1, t_stack *s2);		//id 0

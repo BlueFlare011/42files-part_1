@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 20:07:23 by socana-b          #+#    #+#             */
-/*   Updated: 2022/08/24 12:09:49 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/25 22:17:23 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int	main(int argc, char **argv)
 		crear_stack(&a, &b);
 		if (args_settings(argv, argc, &a))
 		{
-			catch_it(&a, &b);
-			/*
+			set_id(&a);
+			catch_it(&a, &b);/*
 			printf("Pila ordenada:\n");
 			print_stack(&a);
 			write(1, "_________________________________________\n", 42);

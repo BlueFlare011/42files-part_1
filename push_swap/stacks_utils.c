@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 13:50:29 by socana-b          #+#    #+#             */
-/*   Updated: 2022/07/28 12:53:06 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/25 21:38:16 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	add_stack(t_stack *s, int num)
 	if (!new)
 		return ;
 	new->num = num;
+	new->id = 0;
 	new->next = *s;
 	if (*s != NULL)
 		(*s)->before = new;
@@ -67,10 +68,10 @@ void	print_stack(t_stack *s)
 		printf("Del derecho\n");
 		while (aux->next)
 		{
-			printf("%d\n", aux->num);
+			printf("%d - %u\n", aux->num, aux->id);
 			aux = aux->next;
 		}
-		printf("%d\n", aux->num);
+		printf("%d - %u\n", aux->num, aux->id);
 	}
 	else
 		write(1, "Pila vacia\n", 11);
@@ -90,4 +91,46 @@ int	is_sorted(t_stack *s)
 		aux = aux->next;
 	}
 	return (flag);
+}
+
+int	set_all_id(t_stack *a)
+{
+	t_node	*aux;
+	int		flag;
+
+	aux = *a;
+	flag = 0;
+	while (aux && !flag)
+	{
+		if (aux->id == 0)
+			flag = 1;
+		aux = aux->next;
+	}
+	return (flag);
+}
+
+void	set_id(t_stack *a)
+{
+	t_node			*aux;
+	t_node			*less;
+	int				max_int;
+	unsigned int	i;
+
+	i = 1;
+	while (set_all_id(a))
+	{
+		aux = *a;
+		max_int = 2147483647;
+		while (aux)
+		{
+			if ((aux->id == 0) && (aux->num <= max_int))
+			{
+				max_int = aux->num;
+				less = aux;
+			}
+			aux = aux->next;
+		}
+		less->id = i;
+		i++;
+	}
 }
