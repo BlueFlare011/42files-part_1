@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 15:00:15 by socana-b          #+#    #+#             */
-/*   Updated: 2022/08/22 14:10:00 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/29 17:02:29 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	valid_num(char *arg)
 	flag = arg[0] != '\0';
 	while (arg[i] && flag)
 	{
-		if ((i == 0) && (arg[i] == '-'))
+		if ((i == 0) && (arg[i] == '-')) //Tiene que admitir '+'
 			i++;
 		if (!ft_isdigit(arg[i]))
 			flag = 0;
