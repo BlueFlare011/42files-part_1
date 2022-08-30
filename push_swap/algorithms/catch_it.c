@@ -1,5 +1,5 @@
 #include "../push_swap.h"
-
+/*
 static void	algorithm_for_3_2(t_stack *a, t_stack *b)
 {
 	t_node	*biggest;
@@ -68,7 +68,6 @@ void	catch(t_stack *a, t_stack *b)
 			while (aux && !(aux->before->num < num_b && aux->num > num_b))
 				aux = aux->next;
 		}
-		write(1, "holi\n", 5);
 		over_sized(a, aux, num_b);
 		move_num_up(a, NULL, aux->num);
 		stack_move(b, a, "pa\n", 0);
@@ -79,11 +78,9 @@ void	catch_it(t_stack *a, t_stack *b)
 {
 	unsigned int	length;
 	unsigned int	aux;
-	int				i;
 
 	length = stack_lenght(a);
 	aux = length / 2;
-	i = 0;
 	while (aux > 0)
 	{
 		stack_move(a, b, "pb\n", 0);
@@ -93,3 +90,4 @@ void	catch_it(t_stack *a, t_stack *b)
 	catch(a, b);
 	move_num_up(a, b, less_than(a, 0)->num);
 }
+*/

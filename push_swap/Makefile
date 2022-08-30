@@ -58,7 +58,7 @@ clean:
 	@$(RM) $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 #soñar es gratis
 fclean_bonus: 

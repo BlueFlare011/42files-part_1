@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 16:04:15 by socana-b          #+#    #+#             */
-/*   Updated: 2022/08/29 16:41:53 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/30 22:46:25 by blueflare        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	lenght_node(t_node *a, int num, int *i, int *j) //Esto hay que cambiar en todo
+void	lenght_node(t_node *a, int num, int *i, int *j)
 {
 	t_node	*aux;
 
@@ -34,7 +34,7 @@ t_node	*less_than(t_stack *a, int limit)
 	t_node	*aux;
 	t_node	*less;
 
-	aux = *a;
+	aux = a->init;
 	while (limit > 0)
 	{
 		aux = aux->next;
@@ -55,7 +55,7 @@ t_node	*greater_than(t_stack *a, int limit)
 	t_node	*aux;
 	t_node	*biggest;
 
-	aux = *a;
+	aux = a->init;
 	while (limit > 0)
 	{
 		aux = aux->next;
@@ -77,7 +77,7 @@ t_node	*mid_node(t_stack *a)
 	t_node	*aux;
 
 	max = greater_than(a, 0);
-	aux = *a;
+	aux = a->init;
 	while (aux)
 	{
 		if (aux->id == max->id / 2)
@@ -95,7 +95,7 @@ void	move_num_up(t_stack *a, t_stack *b, int to_up)
 
 	i = 0;
 	j = 0;
-	lenght_node(*a, to_up, &i, &j);
+	lenght_node(a->init, to_up, &i, &j);
 	if (i < j)
 	{
 		while (i > 0)

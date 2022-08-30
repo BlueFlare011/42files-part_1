@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_moves.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 13:52:53 by socana-b          #+#    #+#             */
-/*   Updated: 2022/08/16 15:45:09 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/30 22:47:51 by blueflare        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	swap(t_stack *s)
 	t_node	*aux;
 	t_node	*aux2;
 
-	aux = *s;
-	aux2 = (*s)->next;
+	aux = s->init;
+	aux2 = s->init->next;
 	aux->next = aux2->next;
 	aux2->next = aux;
 	aux2->before = aux->before;
 	aux->before = aux2;
-	*s = aux2;
+	s->init = aux2;
 	if (aux->next)
 		aux->next->before = aux;
 }
@@ -32,47 +32,45 @@ void	push(t_stack *s1, t_stack *s2)
 {
 	t_node	*aux;
 
-	if (*s1)
+	if (s1->init)
 	{
-		aux = (*s1);
-		(*s1) = aux->next;
-		if (*s1)
-			(*s1)->before = NULL;
-		aux->next = (*s2);
-		(*s2) = aux;
+		aux = s1->init;
+		s1->init = aux->next;
+		if (s1->init)
+			s1->init->before = NULL;
+		aux->next = s2->init;
+		s2->init = aux;
 		if (aux->next)
 			aux->next->before = aux;
+		s1->len--;
+		s2->len++;
 	}
 }
 
 void	rotate(t_stack *s)
 {
 	t_node	*aux;
-	t_node	*iter;
+	t_node	*last;
 
-	aux = (*s);
+	aux = s->init;
 	aux->next->before = NULL;
-	(*s) = aux->next;
+	s->init = aux->next;
 	aux->next = NULL;
-	iter = (*s);
-	while (iter->next)
-		iter = iter->next;
-	aux->before = iter;
-	iter->next = aux;
+	last = s->final;
+	aux->before = last;
+	last->next = aux;
 }
 
 void	reverse_rotate(t_stack *s)
 {
 	t_node	*aux;
 
-	aux = (*s);
-	while (aux->next)
-		aux = aux->next;
+	aux = s->final;
 	aux->before->next = NULL;
 	aux->before = NULL;
-	(*s)->before = aux;
-	aux->next = (*s);
-	(*s) = aux;
+	s->init->before = aux;
+	aux->next = s->init;
+	s->init = aux;
 }
 
 void	stack_move(t_stack *a, t_stack *b, char *stk, int id_mv)

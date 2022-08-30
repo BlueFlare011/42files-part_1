@@ -1,17 +1,4 @@
 #include "../push_swap.h"
-/*
-int	is_top(t_stack *s, int i, int greater)
-{
-	t_node	*aux;
-
-	aux = *s;
-	while (i > 0)
-	{
-		aux = aux->next;
-		i--;
-	}
-	return (aux->num == greater);
-}*/
 
 void	move_num_up_swap(t_stack *s, t_node *to_up)
 {
@@ -20,7 +7,7 @@ void	move_num_up_swap(t_stack *s, t_node *to_up)
 
 	i = 0;
 	j = 0;
-	lenght_node((*s)->next, to_up->num, &i, &j);
+	lenght_node(s->init->next, to_up->num, &i, &j);
 	if (i < j)
 	{
 		while (i > 0)

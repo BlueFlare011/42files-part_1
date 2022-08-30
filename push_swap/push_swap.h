@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 20:09:51 by socana-b          #+#    #+#             */
-/*   Updated: 2022/08/29 16:44:59 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/08/30 22:50:30 by blueflare        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,12 @@ typedef struct node
 	struct node		*before;
 }t_node;
 
-typedef t_node	*t_stack;
+typedef struct
+{
+	t_node			*init;
+	t_node			*final;
+	unsigned int	len;
+}t_stack;
 
 // Parcheo
 int		error_manager(char **args);
@@ -34,7 +39,6 @@ int		args_settings(char **argv, int argc, t_stack *s);
 // Funciones para pila
 void	print_stack(t_stack *s); //Funcion auxiliar
 void	add_stack(t_stack *s, int num);
-int		stack_lenght(t_stack *s);
 void	delete_stack(t_stack *s);
 int		is_sorted(t_stack *s);
 void	set_id(t_stack *a);

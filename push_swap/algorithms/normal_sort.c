@@ -23,7 +23,7 @@ static void	algorithm_for_3(t_stack *a, t_stack *b)
 			stack_move(a, b, "ra\n", 2);
 		if (biggest->before && biggest->next)
 			stack_move(a, b, "rra\n", 3);
-		if ((*a)->num > (*a)->next->num)
+		if (a->init->num > a->init->next->num)
 			stack_move(a, b, "sa\n", 1);
 	}
 }
@@ -32,7 +32,7 @@ void	algorithm(t_stack *a, t_stack *b)
 {
 	t_node	*less;
 
-	while (stack_lenght(a) > 3 && !is_sorted(a))
+	while (a->len > 3 && !is_sorted(a))
 	{
 		less = less_than(a, 0);
 		move_num_up(a, b, less->num);
@@ -40,6 +40,6 @@ void	algorithm(t_stack *a, t_stack *b)
 			stack_move(a, b, "pb\n", 0);
 	}
 	algorithm_for_3(a, b);
-	while (*b)
+	while (b->init)
 			stack_move(b, a, "pa\n", 0);
 }
