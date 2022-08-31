@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stacks_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 13:50:29 by socana-b          #+#    #+#             */
-/*   Updated: 2022/08/30 22:57:39 by blueflare        ###   ########.fr       */
+/*   Updated: 2022/08/31 09:43:41 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	is_sorted(t_stack *s)
 
 	aux = s->init->next;
 	flag = 1;
-	while ((aux != s->init) && flag)
+	while (aux && flag)
 	{
 		if (aux->num < aux->before->num)
 			flag = 0;

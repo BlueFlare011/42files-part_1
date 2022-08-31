@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 16:04:15 by socana-b          #+#    #+#             */
-/*   Updated: 2022/08/30 22:46:25 by blueflare        ###   ########.fr       */
+/*   Updated: 2022/08/31 14:54:37 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,19 +88,19 @@ t_node	*mid_node(t_stack *a)
 	return (aux);
 }
 
-void	move_num_up(t_stack *a, t_stack *b, int to_up)
+void	move_num_up(t_stack *s, int to_up) // Que solo haya una pila
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	lenght_node(a->init, to_up, &i, &j);
+	lenght_node(s->init, to_up, &i, &j);
 	if (i < j)
 	{
 		while (i > 0)
 		{
-			stack_move(a, b, "ra\n", 2);
+			stack_move(s, NULL, "ra\n", 2);
 			i--;
 		}
 	}
@@ -108,7 +108,33 @@ void	move_num_up(t_stack *a, t_stack *b, int to_up)
 	{
 		while (j > 0)
 		{
-			stack_move(a, b, "rra\n", 3);
+			stack_move(s, NULL, "rra\n", 3);
+			j--;
+		}
+	}
+}
+
+void	move_num_up_b(t_stack *s, int to_up) // Que solo haya una pila
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	lenght_node(s->init, to_up, &i, &j);
+	if (i < j)
+	{
+		while (i > 0)
+		{
+			stack_move(s, NULL, "rb\n", 2);
+			i--;
+		}
+	}
+	else
+	{
+		while (j > 0)
+		{
+			stack_move(s, NULL, "rrb\n", 3);
 			j--;
 		}
 	}

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm.c                                  :+:      :+:    :+:   */
+/*   normal_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 20:05:55 by socana-b          #+#    #+#             */
-/*   Updated: 2022/08/01 12:14:19 by blueflare        ###   ########.fr       */
+/*   Updated: 2022/08/31 16:24:04 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	algorithm(t_stack *a, t_stack *b)
 	while (a->len > 3 && !is_sorted(a))
 	{
 		less = less_than(a, 0);
-		move_num_up(a, b, less->num);
+		move_num_up(a, less->num);
 		if (!is_sorted(a))
 			stack_move(a, b, "pb\n", 0);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_moves.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 13:52:53 by socana-b          #+#    #+#             */
-/*   Updated: 2022/08/30 22:47:51 by blueflare        ###   ########.fr       */
+/*   Updated: 2022/08/31 09:51:24 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	push(t_stack *s1, t_stack *s2)
 		if (s1->init)
 			s1->init->before = NULL;
 		aux->next = s2->init;
+		if (!s2->init)
+			s2->final = aux;
 		s2->init = aux;
 		if (aux->next)
 			aux->next->before = aux;
@@ -50,15 +52,14 @@ void	push(t_stack *s1, t_stack *s2)
 void	rotate(t_stack *s)
 {
 	t_node	*aux;
-	t_node	*last;
 
 	aux = s->init;
 	aux->next->before = NULL;
 	s->init = aux->next;
 	aux->next = NULL;
-	last = s->final;
-	aux->before = last;
-	last->next = aux;
+	aux->before = s->final;
+	s->final->next = aux;
+	s->final = s->final->next;
 }
 
 void	reverse_rotate(t_stack *s)
@@ -67,6 +68,7 @@ void	reverse_rotate(t_stack *s)
 
 	aux = s->final;
 	aux->before->next = NULL;
+	s->final = aux->before;
 	aux->before = NULL;
 	s->init->before = aux;
 	aux->next = s->init;

@@ -28,6 +28,7 @@ void	move_num_up_swap(t_stack *s, t_node *to_up)
 	}
 }
 
+
 void	shitty_sort(t_stack *s)
 {
 	t_node	*greater;
@@ -38,7 +39,7 @@ void	shitty_sort(t_stack *s)
 	while (!is_sorted(s))
 	{
 		greater = greater_than(s, i);
-		move_num_up(s, NULL, greater->num);
+		move_num_up(s, greater->num);
 		if (i != 0)
 			move_num_up_swap(s, aux);
 		aux = greater;
