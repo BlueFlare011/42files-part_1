@@ -9,7 +9,7 @@ for i in $(seq $TOTAL)
 do
 	ARG=$(ruby -e "puts (1..$lenlist).to_a.shuffle.join(' ')")
 	ret=$(./push_swap $ARG | wc -l)
-	ret2=$(./push_swap $ARG | ./checker_Mac $ARG )
+	ret2=$(./push_swap $ARG | ./checker_linux $ARG )
 	var=$(($ret + $var))
 	
 	echo "$ret -----> $ret2"

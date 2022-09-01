@@ -33,5 +33,15 @@ void	high_five(t_stack *a, t_stack *b)
 	int	limit;
 
 	limit = a->len / 5;
-	push_by_five(a, b, limit);
+	if (a->len >= 10)
+	{
+		push_by_five(a, b, limit);
+		while (b->init)
+		{
+			move_num_up_b(b, greater_than(b, 0)->num);		
+			stack_move(b, a, "pa\n", 0);
+		}
+	}
+	else
+		algorithm(a, b);
 }
