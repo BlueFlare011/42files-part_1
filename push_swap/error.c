@@ -6,7 +6,7 @@
 /*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 15:00:15 by socana-b          #+#    #+#             */
-/*   Updated: 2022/09/01 14:33:51 by blueflare        ###   ########.fr       */
+/*   Updated: 2022/09/03 13:01:44 by blueflare        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	valid_num(char *arg)
 	flag = arg[0] != '\0';
 	while (arg[i] && flag)
 	{
-		if ((i == 0) && ((arg[i] == '-') || (arg[i] == '+'))) //Tiene que admitir '+'
+		if ((i == 0) && ((arg[i] == '-') || (arg[i] == '+')))
 			i++;
 		if (!ft_isdigit(arg[i]))
 			flag = 0;
