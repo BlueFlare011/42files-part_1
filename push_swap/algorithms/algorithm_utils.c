@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 16:04:15 by socana-b          #+#    #+#             */
-/*   Updated: 2022/08/31 14:54:37 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/09/10 09:52:41 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ t_node	*mid_node(t_stack *a)
 	return (aux);
 }
 
-void	move_num_up(t_stack *s, int to_up) // Que solo haya una pila
+void	move_num_up(t_stack *s, int to_up) 
 {
 	int	i;
 	int	j;
@@ -114,7 +114,7 @@ void	move_num_up(t_stack *s, int to_up) // Que solo haya una pila
 	}
 }
 
-void	move_num_up_b(t_stack *s, int to_up) // Que solo haya una pila
+void	move_num_up_b(t_stack *s, int to_up)
 {
 	int	i;
 	int	j;

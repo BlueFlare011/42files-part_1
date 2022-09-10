@@ -13,7 +13,7 @@ SRCS	=	Libft/ft_atoi.c\
 			algorithms/normal_sort.c\
 			algorithms/algorithm_utils.c\
 			algorithms/high_five.c\
-			algorithms/prototipo_3.c\
+			algorithms/prototipo_5.c\
 			algorithms/sort_without_push.c\
 			push_swap.c\
 

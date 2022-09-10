@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 20:07:23 by socana-b          #+#    #+#             */
-/*   Updated: 2022/09/01 11:59:44 by blueflare        ###   ########.fr       */
+/*   Updated: 2022/09/10 10:21:50 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ int	main(int argc, char **argv)
 		if (args_settings(argv, argc, &a))
 		{
 			set_id(&a);
-			high_five(&a, &b);/*
+			prototipo_5(&a, &b);
 			printf("Pila ordenada:\n");
 			print_stack(&a);
 			write(1, "_________________________________________\n", 42);
-			print_stack(&b);*/
+			print_stack(&b);
 		}
 		delete_stack(&a);
 		delete_stack(&b);

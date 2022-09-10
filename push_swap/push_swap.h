@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 20:09:51 by socana-b          #+#    #+#             */
-/*   Updated: 2022/09/03 13:05:18 by blueflare        ###   ########.fr       */
+/*   Updated: 2022/09/10 10:21:35 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	re_reverse_rotate(t_stack *a, t_stack *b); //id 6
 void	algorithm(t_stack *a, t_stack *b); //Normal
 void	high_five(t_stack *a, t_stack *b); //High-Five!
 void	shitty_sort(t_stack *s);	//Shitty
-void	prototipo_3(t_stack *a, t_stack *b);	//???
+void	prototipo_5(t_stack *a, t_stack *b);
 void	lenght_node(t_node *a, int num, int *i, int *j);
 t_node	*less_than(t_stack *a, int limit);
 t_node	*greater_than(t_stack *a, int limit);
