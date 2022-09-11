@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-static void	algorithm_for_3(t_stack *a, t_stack *b)
+void	algorithm_for_3(t_stack *a, t_stack *b)
 {
 	t_node	*biggest;
 

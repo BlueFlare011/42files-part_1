@@ -24,7 +24,7 @@ void	crear_stack(t_stack *a, t_stack *b)
 	a->final = NULL;
 	b->final = NULL;
 	a->len = 0;
-	a->len = 0;
+	b->len = 0;
 }
 
 int	main(int argc, char **argv)
@@ -38,11 +38,11 @@ int	main(int argc, char **argv)
 		if (args_settings(argv, argc, &a))
 		{
 			set_id(&a);
-			prototipo_5(&a, &b);
+			prototipo_5(&a, &b);/*
 			printf("Pila ordenada:\n");
 			print_stack(&a);
 			write(1, "_________________________________________\n", 42);
-			print_stack(&b);
+			print_stack(&b);*/
 		}
 		delete_stack(&a);
 		delete_stack(&b);

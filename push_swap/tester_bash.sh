@@ -24,7 +24,7 @@ do
 	ARG=$(seq -$lenlist $lenlist | sort -R | head -n $lenlist | tr '\n' ' ')
 	#echo $ARG
 	ret=$(./push_swap $ARG | wc -l)
-	ret2=$(./push_swap $ARG | ./checker_Mac $ARG )
+	ret2=$(./push_swap $ARG | ./checker_linux $ARG )
 	var=$(($ret + $var))
 	echo "$ret -----> $ret2"
 	if [ $(($i % 10)) -eq 0 ]
