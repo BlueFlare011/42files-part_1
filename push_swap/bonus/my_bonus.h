@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 20:13:11 by socana-b          #+#    #+#             */
-/*   Updated: 2022/07/28 12:48:41 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/09/17 17:42:42 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include "../Libft/libft.h"
+# include "../libft/libft.h"
 
 typedef struct node
 {
@@ -33,6 +33,7 @@ void	print_stack(t_stack *s); //Funcion auxiliar
 void	add_stack(t_stack *s, int num);
 int		stack_lenght(t_stack *s);
 void	delete_all(t_stack *s, char **moves);
+void	delete_stack(t_stack *s);
 int		is_sorted(t_stack *s);
 void	swap(t_stack *s);
 void	push(t_stack *s1, t_stack *s2);

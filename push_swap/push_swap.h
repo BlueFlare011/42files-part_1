@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 20:09:51 by socana-b          #+#    #+#             */
-/*   Updated: 2022/09/10 10:21:35 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/09/17 17:42:30 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include "Libft/libft.h"
+# include "libft/libft.h"
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 
-typedef struct node
+typedef struct s_node
 {
-	int				num;
-	unsigned int	id;
-	struct node		*next;
-	struct node		*before;
+	int					num;
+	unsigned int		id;
+	struct s_node		*next;
+	struct s_node		*before;
 }t_node;
 
-typedef struct
+typedef struct s_stack
 {
 	t_node			*init;
 	t_node			*final;
@@ -55,9 +55,7 @@ void	re_rotate(t_stack *a, t_stack *b);	//id 5
 void	re_reverse_rotate(t_stack *a, t_stack *b); //id 6
 //Funciones para algoritmo
 void	algorithm(t_stack *a, t_stack *b); //Normal
-void	high_five(t_stack *a, t_stack *b); //High-Five!
-void	shitty_sort(t_stack *s);	//Shitty
-void	prototipo_5(t_stack *a, t_stack *b);
+void	by_chunks(t_stack *a, t_stack *b); //By_chunks!
 void	lenght_node(t_node *a, int num, int *i, int *j);
 t_node	*less_than(t_stack *a, int limit);
 t_node	*greater_than(t_stack *a, int limit);

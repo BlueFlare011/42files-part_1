@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 20:05:55 by socana-b          #+#    #+#             */
-/*   Updated: 2022/08/31 16:24:04 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/09/17 15:44:16 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,5 @@ void	algorithm(t_stack *a, t_stack *b)
 	}
 	algorithm_for_3(a, b);
 	while (b->init)
-			stack_move(b, a, "pa\n", 0);
+		stack_move(b, a, "pa\n", 0);
 }

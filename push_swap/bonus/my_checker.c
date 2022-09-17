@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 12:47:46 by socana-b          #+#    #+#             */
-/*   Updated: 2022/08/10 14:26:56 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/09/17 18:55:25 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	check_moves(char **moves)
 			valid = 0;
 		i++;
 	}
+	printf("%d\n", i);
 	return (valid);
 }
 
@@ -99,8 +100,9 @@ int	main(int argc, char **argv)
 			}
 			else
 				write(2, "Error\n", 6);
+			delete_all(&a, moves);
 		}
-		delete_all(&a, moves);
+		delete_stack(&a);
 	}
 	return (0);
 }
