@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 12:47:46 by socana-b          #+#    #+#             */
-/*   Updated: 2022/09/17 18:55:25 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/09/19 17:51:14 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	valid_move(char *move)
 		return (1);
 	if (ft_strncmp(move, "pa", l) == 0 || ft_strncmp(move, "pb", l) == 0)
 		return (1);
-	if (ft_strncmp(move, "rra", l) == 0 || ft_strncmp(move, "rra", l) == 0
+	if (ft_strncmp(move, "rra", l) == 0 || ft_strncmp(move, "rrb", l) == 0
 		|| ft_strncmp(move, "rrr", l) == 0)
 		return (1);
 	if (ft_strncmp(move, "sa", l) == 0 || ft_strncmp(move, "sb", l) == 0
@@ -46,7 +46,6 @@ int	check_moves(char **moves)
 			valid = 0;
 		i++;
 	}
-	printf("%d\n", i);
 	return (valid);
 }
 
@@ -55,6 +54,7 @@ char	**read_moves(void)
 	char	*aux;
 	char	*move_line;
 	char	*scan_in;
+	char	**result;
 
 	move_line = ft_strdup("");
 	scan_in = (char *)malloc(sizeof(char) * 1);
@@ -69,7 +69,9 @@ char	**read_moves(void)
 		free(aux);
 	}
 	free(scan_in);
-	return (ft_split(move_line, '\n'));
+	result = ft_split(move_line, '\n');
+	free(move_line);
+	return (result);
 }
 
 void	crear_stack(t_stack *a, t_stack *b)

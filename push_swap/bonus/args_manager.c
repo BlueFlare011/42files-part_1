@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 15:01:55 by socana-b          #+#    #+#             */
-/*   Updated: 2022/07/28 13:59:59 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/09/19 18:02:16 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,7 @@ int	args_settings(char **argv, int argc, t_stack *s)
 		{
 			add_to_stack(args, s);
 			delete_matrix(args);
-			if (!is_sorted(s))
-				return (1);
+			return (1);
 		}
 		else
 		{

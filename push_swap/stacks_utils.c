@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 13:50:29 by socana-b          #+#    #+#             */
-/*   Updated: 2022/09/17 15:47:49 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/09/19 17:49:27 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,29 +102,4 @@ void	set_id(t_stack *a)
 		less->id = i;
 		i++;
 	}
-}
-
-void	print_stack(t_stack *s) //borrar y la norma ira bien
-{
-	t_node	*aux;
-
-	if (s->init)
-	{
-		aux = s->init;
-		printf("Del derecho\n");
-		while (aux)
-		{
-			printf("%d - %u\n", aux->num, aux->id);
-			aux = aux->next;
-		}
-		aux = s->final;
-		printf("Del reves\n");
-		while (aux)
-		{
-			printf("%d - %u\n", aux->num, aux->id);
-			aux = aux->before;
-		}
-	}
-	else
-		write(1, "Pila vacia\n", 11);
 }

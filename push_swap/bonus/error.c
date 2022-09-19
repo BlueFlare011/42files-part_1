@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 15:00:15 by socana-b          #+#    #+#             */
-/*   Updated: 2022/07/24 19:12:18 by blueflare        ###   ########.fr       */
+/*   Updated: 2022/09/19 17:55:39 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	valid_num(char *arg)
 	flag = arg[0] != '\0';
 	while (arg[i] && flag)
 	{
-		if ((i == 0) && (arg[i] == '-'))
+		if ((i == 0) && ((arg[i] == '-') || (arg[i] == '+')))
 			i++;
 		if (!ft_isdigit(arg[i]))
 			flag = 0;

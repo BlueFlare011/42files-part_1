@@ -40,12 +40,12 @@ $(BONUS): $(BNS_OBJ)
 	$(CC) $(CFLAGS) $(BNS_OBJ) libft/libft.a -o $(BONUS)
 
 clean:
-	$(RM) $(OBJS)
-	$(RM) $(BNS_OBJ)
+	@$(RM) $(OBJS)
+	@$(RM) $(BNS_OBJ)
 
 fclean: clean
-	$(RM) $(NAME)
-	$(RM) $(BONUS)
+	@$(RM) $(NAME)
+	@$(RM) $(BONUS)
 	@make fclean -sC libft
 
 re: fclean all
