@@ -6,11 +6,16 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 12:47:46 by socana-b          #+#    #+#             */
-/*   Updated: 2022/09/19 17:51:14 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/09/24 12:59:51 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "my_bonus.h"
+#include "../include/my_bonus.h"
+
+void	check_leaks(void)
+{
+	system("leaks my_checker");
+}
 
 int	valid_move(char *move)
 {
@@ -85,7 +90,7 @@ int	main(int argc, char **argv)
 	t_stack	a;
 	t_stack	b;
 	char	**moves;
-
+	atexit(check_leaks);
 	if (argc > 1)
 	{
 		crear_stack(&a, &b);

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   stack_moves2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blueflare <blueflare@student.42.fr>        +#+  +:+       +#+        */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 15:12:05 by socana-b          #+#    #+#             */
-/*   Updated: 2022/07/26 16:56:36 by blueflare        ###   ########.fr       */
+/*   Updated: 2022/09/24 10:44:25 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "my_bonus.h"
+#include "../include/push_swap.h"
 
 void	super_swap(t_stack *a, t_stack *b)
 {

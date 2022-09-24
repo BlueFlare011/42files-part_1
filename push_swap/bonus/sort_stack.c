@@ -6,11 +6,11 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 12:48:17 by socana-b          #+#    #+#             */
-/*   Updated: 2022/07/28 12:48:18 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/09/24 13:00:14 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "my_bonus.h"
+#include "../include/my_bonus.h"
 
 void	push_move(t_stack *a, t_stack *b, char *move)
 {

@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 20:09:51 by socana-b          #+#    #+#             */
-/*   Updated: 2022/09/17 17:42:30 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/09/24 10:48:39 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include "libft/libft.h"
+# include "libft.h"
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 

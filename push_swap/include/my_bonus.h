@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 20:13:11 by socana-b          #+#    #+#             */
-/*   Updated: 2022/09/17 17:42:42 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/09/24 10:48:45 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include "../libft/libft.h"
+# include "libft.h"
 
 typedef struct node
 {

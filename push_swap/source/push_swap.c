@@ -6,11 +6,16 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 20:07:23 by socana-b          #+#    #+#             */
-/*   Updated: 2022/09/19 17:48:49 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/09/24 12:52:07 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
+
+void	check_leaks(void)
+{
+	system("leaks push_swap");
+}
 
 void	crear_stack(t_stack *a, t_stack *b)
 {
@@ -26,7 +31,7 @@ int	main(int argc, char **argv)
 {
 	t_stack	a;
 	t_stack	b;
-
+	atexit(check_leaks);
 	if (argc > 1)
 	{
 		crear_stack(&a, &b);

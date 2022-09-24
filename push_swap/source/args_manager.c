@@ -6,11 +6,11 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 15:01:55 by socana-b          #+#    #+#             */
-/*   Updated: 2022/08/22 14:10:18 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/09/24 10:44:47 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 static char	**create_matrix(char **argv, int argc)
 {

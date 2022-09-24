@@ -6,11 +6,11 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 15:43:54 by socana-b          #+#    #+#             */
-/*   Updated: 2022/09/17 15:43:55 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/09/24 10:44:42 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../include/push_swap.h"
 
 void	move_num_up_b(t_stack *s, int to_up)
 {

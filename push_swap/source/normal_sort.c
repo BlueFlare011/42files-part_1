@@ -6,11 +6,11 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 20:05:55 by socana-b          #+#    #+#             */
-/*   Updated: 2022/09/17 15:44:16 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/09/24 10:44:13 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../include/push_swap.h"
 
 void	algorithm_for_3(t_stack *a, t_stack *b)
 {

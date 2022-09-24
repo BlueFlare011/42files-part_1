@@ -43,7 +43,7 @@ SRCSBONUS	=		ft_lstnew_bonus.c \
 					ft_lstiter_bonus.c \
 					ft_lstmap_bonus.c
 
-SRCH	=			libft.h
+SRCH	=			../include/libft.h
 
 OBJS	=			$(SRCS:.c=.o)
 
