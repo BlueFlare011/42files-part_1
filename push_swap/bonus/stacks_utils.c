@@ -65,9 +65,7 @@ void	delete_all(t_stack *s, char **moves)
 void	delete_stack(t_stack *s)
 {
 	t_node	*aux;
-	int		i;
 
-	i = 0;
 	while (*s)
 	{
 		aux = *s;
