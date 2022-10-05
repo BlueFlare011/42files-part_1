@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_settings.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: socana-b <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 14:40:48 by socana-b          #+#    #+#             */
-/*   Updated: 2022/04/18 14:40:50 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/10/05 11:53:00 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ int	key_control(int keycode, t_Var *var)
 		exit(1);
 	}
 	if (keycode == KEY_UP)
-		ft_move_up(var);
+		ft_move(var, 0, -80);
 	if (keycode == KEY_DOWN)
-		ft_move_down(var);
+		ft_move(var, 0, 80);
 	if (keycode == KEY_LEFT)
-		ft_move_left(var);
+		ft_move(var, -80, 0);
 	if (keycode == KEY_RIGHT)
-		ft_move_right(var);
+		ft_move(var, 80, 0);
 	return (0);
 }
 

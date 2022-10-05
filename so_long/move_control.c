@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_control.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: socana-b <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 15:01:37 by socana-b          #+#    #+#             */
-/*   Updated: 2022/04/18 15:01:39 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/10/05 12:10:15 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,92 +37,21 @@ static int	move_backend(t_Var *var, int x, int y)
 	return (0);
 }
 
-void	ft_move_up(t_Var *var)
+void	ft_move(t_Var *var, int x, int y)
 {
-	int	f;
-
-	f = move_backend(var, 0, -80);
-	if (f)
+	if (move_backend(var, x, y) == 1)
 	{
 		mlx_put_image_to_window(var->mlx, var->win, var->floor,
 			var->ness_x, var->ness_y);
 		if (var->map[var->ness_y / 80][var->ness_x / 80] == EXIT)
 			mlx_put_image_to_window(var->mlx, var->win, var->exit,
 				var->ness_x, var->ness_y);
-		var->ness_y -= 80;
+		var->ness_y += y;
+		var->ness_x += x;
 		mlx_put_image_to_window(var->mlx, var->win, var->ness,
 			var->ness_x, var->ness_y);
 	}
-	if (f == 2)
-	{
-		break_all(var);
-		exit(1);
-	}
-}
-
-void	ft_move_down(t_Var *var)
-{
-	int	f;
-
-	f = move_backend(var, 0, 80);
-	if (f)
-	{
-		mlx_put_image_to_window(var->mlx, var->win, var->floor,
-			var->ness_x, var->ness_y);
-		if (var->map[var->ness_y / 80][var->ness_x / 80] == EXIT)
-			mlx_put_image_to_window(var->mlx, var->win, var->exit,
-				var->ness_x, var->ness_y);
-		var->ness_y += 80;
-		mlx_put_image_to_window(var->mlx, var->win, var->ness,
-			var->ness_x, var->ness_y);
-	}
-	if (f == 2)
-	{
-		break_all(var);
-		exit(1);
-	}
-}
-
-void	ft_move_left(t_Var *var)
-{
-	int	f;
-
-	f = move_backend(var, -80, 0);
-	if (f)
-	{
-		mlx_put_image_to_window(var->mlx, var->win, var->floor,
-			var->ness_x, var->ness_y);
-		if (var->map[var->ness_y / 80][var->ness_x / 80] == EXIT)
-			mlx_put_image_to_window(var->mlx, var->win, var->exit,
-				var->ness_x, var->ness_y);
-		var->ness_x -= 80;
-		mlx_put_image_to_window(var->mlx, var->win, var->ness,
-			var->ness_x, var->ness_y);
-	}
-	if (f >= 2)
-	{
-		break_all(var);
-		exit(1);
-	}
-}
-
-void	ft_move_right(t_Var *var)
-{
-	int	f;
-
-	f = move_backend(var, 80, 0);
-	if (f)
-	{
-		mlx_put_image_to_window(var->mlx, var->win, var->floor,
-			var->ness_x, var->ness_y);
-		if (var->map[var->ness_y / 80][var->ness_x / 80] == EXIT)
-			mlx_put_image_to_window(var->mlx, var->win, var->exit,
-				var->ness_x, var->ness_y);
-		var->ness_x += 80;
-		mlx_put_image_to_window(var->mlx, var->win, var->ness,
-			var->ness_x, var->ness_y);
-	}
-	if (f >= 2)
+	else
 	{
 		break_all(var);
 		exit(1);

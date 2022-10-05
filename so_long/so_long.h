@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: socana-b <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 14:54:38 by socana-b          #+#    #+#             */
-/*   Updated: 2022/04/18 14:54:40 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/10/05 11:50:46 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,7 @@ typedef struct s_valid{
 int		valid_map(int argc, char **argv, t_Valid *valid, t_Var *var);
 int		key_control(int keycode, t_Var *var);
 void	create_window(t_Var *var);
-void	ft_move_up(t_Var *var);
-void	ft_move_down(t_Var *var);
-void	ft_move_left(t_Var *var);
-void	ft_move_right(t_Var *var);
+void	ft_move(t_Var *var, int x, int y);
 size_t	ft_strlen(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	create_images(t_Var *var);
