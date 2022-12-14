@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:10:30 by socana-b          #+#    #+#             */
-/*   Updated: 2022/08/10 13:59:38 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/12/14 12:25:28 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*verify_commands(char **path, char *cmd)
 	int		i;
 	int		flag;
 
+	if (!cmd)
+		return (NULL);
 	i = 0;
 	flag = 0;
 	while (path[i] && !flag)
@@ -57,6 +59,25 @@ char	**create_path(char **envp)
 	return (all_directions);
 }
 
+int	free_trash(t_pipy	*my_var, char **path, char **bnry)
+{
+	int	i;
+
+	i = 0;
+	while (path[i])
+		free(path[i++]);
+	free(path);
+	i = 0;
+	while (i < my_var->total_commands)
+	{
+		if (bnry[i])
+			free(bnry[i]);
+		i++;
+	}
+	free(bnry);
+	return (1);
+}
+
 int	manage_path(char **envp, t_pipy	*my_var)
 {
 	char	**path;
@@ -67,35 +88,19 @@ int	manage_path(char **envp, t_pipy	*my_var)
 	if (!bnry)
 		return (1);
 	path = create_path(envp);
-	if (path)
+	if (!path)
 	{
-		i = 0;
-		while (i < my_var->total_commands)
-		{
-			bnry[i] = ft_strjoin("/", my_var->command[i][0]);
-			i++;
-		}
-		i = 0;
-		while (i < my_var->total_commands)
-		{
-			my_var->path_cmd[i] = verify_commands(path, bnry[i]);
-			i++;
-		}
-		i = 0;
-		while (path[i])
-		{
-			free(path[i]);
-			i++;
-		}
-		free(path);
-		i = 0;
-		while (i < my_var->total_commands)
-		{
-			free(bnry[i]);
-			i++;
-		}
 		free(bnry);
-		return (0);
+		return (1);
 	}
-	return (1);
+	i = 0;
+	while (i < my_var->total_commands)
+	{
+		bnry[i] = ft_strjoin("/", my_var->command[i][0]);
+		my_var->path_cmd[i] = verify_commands(path, bnry[i]);
+		if (!my_var->path_cmd[i++])
+			return (free_trash(my_var, path, bnry));
+	}
+	free_trash(my_var, path, bnry);
+	return (0);
 }

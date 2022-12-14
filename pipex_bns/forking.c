@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 23:37:31 by blueflare         #+#    #+#             */
-/*   Updated: 2022/12/03 10:36:50 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/12/14 12:26:10 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,38 +41,10 @@ void	child_process(t_pipy *my_var, t_pipe *fd_pipe, char **envp, int index)
 	exit(1);
 }
 
-void	forking(t_pipy	*my_var, char **envp)
+void	cleaning(t_pipy	*my_var, t_pipe	*fd_pipe, pid_t	*process)
 {
-	pid_t	*process;
-	t_pipe	*fd_pipe;
-	int		i;
-	
-	i = 0;
-	process = malloc(sizeof(pid_t) * my_var->total_commands);
-	if (!process)
-		error(my_var);
-	fd_pipe = malloc(sizeof(t_pipe) * (my_var->total_commands - 1));
-	if (!fd_pipe)
-	{
-		free(process);
-		error(my_var);
-	}
-	while (i < my_var->total_commands - 1)
-	{
-		if (pipe(fd_pipe[i]) == -1)
-			error(my_var);
-		i++;
-	}
-	i = 0;
-	while (i < my_var->total_commands)
-	{
-		process[i] = fork();
-		if (process[i] == -1)
-			error(my_var);
-		if (process[i] == 0)
-			child_process(my_var, fd_pipe, envp, i);
-		i++;
-	}
+	int	i;
+
 	i = 0;
 	while (i < my_var->total_commands - 1)
 	{
@@ -85,4 +57,47 @@ void	forking(t_pipy	*my_var, char **envp)
 		waitpid(process[i++], NULL, 0);
 	free(process);
 	free(fd_pipe);
+}
+
+int	open_pipes(t_pipy	*my_var, t_pipe	*fd_pipe)
+{
+	int	i;
+
+	i = 0;
+	while (i < my_var->total_commands - 1)
+	{
+		if (pipe(fd_pipe[i]) == -1)
+			error(my_var);
+		i++;
+	}
+	return (0);
+}
+
+void	forking(t_pipy	*my_var, char **envp)
+{
+	pid_t	*process;
+	t_pipe	*fd_pipe;
+	int		i;
+
+	i = 0;
+	process = malloc(sizeof(pid_t) * my_var->total_commands);
+	if (!process)
+		error(my_var);
+	fd_pipe = malloc(sizeof(t_pipe) * (my_var->total_commands - 1));
+	if (!fd_pipe)
+	{
+		free(process);
+		error(my_var);
+	}
+	open_pipes(my_var, fd_pipe);
+	while (i < my_var->total_commands)
+	{
+		process[i] = fork();
+		if (process[i] == -1)
+			error(my_var);
+		if (process[i] == 0)
+			child_process(my_var, fd_pipe, envp, i);
+		i++;
+	}
+	cleaning(my_var, fd_pipe, process);
 }
