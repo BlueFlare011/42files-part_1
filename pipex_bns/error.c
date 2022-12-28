@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:10:11 by socana-b          #+#    #+#             */
-/*   Updated: 2022/12/14 12:25:47 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/12/28 11:05:35 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	manage_error(t_pipy	*my_var, int argc, char **argv, char **envp)
 	if (manage_path(envp, my_var))
 	{
 		write (2, "Error: Invalid commands\n", 24);
-		free_all_mem(my_var);
 		return (2);
 	}
 	i = 0;
@@ -58,7 +57,6 @@ int	manage_error(t_pipy	*my_var, int argc, char **argv, char **envp)
 		if (!my_var->path_cmd[i++])
 		{
 			write (2, "Error: Invalid commands\n", 24);
-			free_all_mem(my_var);
 			return (2);
 		}
 	}

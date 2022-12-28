@@ -6,7 +6,7 @@
 /*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 23:37:07 by blueflare         #+#    #+#             */
-/*   Updated: 2022/12/14 11:36:01 by socana-b         ###   ########.fr       */
+/*   Updated: 2022/12/28 11:20:39 by socana-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,13 @@ int	create_arrays(t_pipy *my_var, int argc)
 int	main(int argc, char **argv, char **envp)
 {
 	t_pipy	my_var;
+	int		manage;
 
 	my_var.total_commands = argc - 3;
 	if (!create_arrays(&my_var, argc))
 		return (1);
-	if (!manage_error(&my_var, argc, argv, envp))
+	manage = manage_error(&my_var, argc, argv, envp);
+	if (!manage)
 	{
 		forking(&my_var, envp);
 		free_all_mem(&my_var);
@@ -52,8 +54,9 @@ int	main(int argc, char **argv, char **envp)
 	}
 	else
 	{
-		free_all_mem(&my_var);
-		return (1);
+		if (manage != 1)
+			free_all_mem(&my_var);
+		return (manage);
 	}
 	return (0);
 }
