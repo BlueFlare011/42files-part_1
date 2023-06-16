@@ -34,37 +34,68 @@ static int	leng(int n)
 	return (i);
 }
 
-void recursive(char *result, int num, int i, int length, int limit)
+static void	reverse(char *str)
 {
-	if (i == limit)
-		result[i] = (char)num + 48;
-	else
+	unsigned long int	i;
+	char				aux;
+
+	i = 0;
+	while (i < ft_strlen(str) / 2)
 	{
-		recursive(result, num / 10, i - 1, length, limit);
-		result[i] = (char)((num % 10) + 48);
+		aux = str[i];
+		str[i] = str[ft_strlen(str) - i - 1];
+		str[ft_strlen(str) - i - 1] = aux;
+		i++;
+	}	
+}
+
+static int	minus(int n, char *str)
+{
+	int	i;
+
+	i = 0;
+	if (n == -2147483648)
+	{
+		n = 214748364;
+		str[i] = '8';
+		i++;
 	}
+	if (n < 0)
+		n *= -1;
+	while (n >= 1)
+	{
+		str[i] = (n % 10) + 48;
+		n = n / 10;
+		i++;
+	}
+	str[i] = '-';
+	i++;
+	return (i);
 }
 
 char	*ft_itoa(int n)
 {
 	char	*num;
-	int 	length;
-	int		limit;
+	int		i;
 
-	if (n == -2147483648)
-		return(ft_strdup("-2147483648"));
-	length = leng(n);
-	limit = 0;
-	num = malloc (sizeof(char) * (length + 1));
+	i = 0;
+	num = malloc (sizeof(char) * (leng(n) + 1));
 	if (num == NULL)
 		return (NULL);
 	if (n < 0)
+		i = minus(n, num);
+	else if (n == 0)
+		num[i++] = '0';
+	else
 	{
-		num[0] = '-';
-		limit = 1;
-		n *= -1;
+		while (n > 0)
+		{
+			num[i] = (n % 10) + 48;
+			n = n / 10;
+			i++;
+		}
 	}
-	recursive(num, n, length - 1, length, limit);
-	num[length] = '\0';
+	num[i] = '\0';
+	reverse(num);
 	return (num);
 }
