@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: blueflare011 <blueflare011@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 14:37:21 by socana-b          #+#    #+#             */
-/*   Updated: 2022/10/22 11:09:41 by socana-b         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:18:03 by blueflare01      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	create_struct(&win);
-	win.exit->exit_bool = valid.obj;
+	win.exit->exit_goal = valid.obj;
 	create_window(&win);
 	return (0);
 }

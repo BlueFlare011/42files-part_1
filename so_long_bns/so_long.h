@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: blueflare011 <blueflare011@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 14:54:38 by socana-b          #+#    #+#             */
-/*   Updated: 2022/10/22 11:15:04 by socana-b         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:56:52 by blueflare01      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_obj{
 typedef struct s_exit{
 	void	*closed;
 	void	*open;
-	int		exit_bool;
+	int		exit_goal;
 }t_exit;
 
 typedef struct s_win{

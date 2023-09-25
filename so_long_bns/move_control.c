@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_control.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: blueflare011 <blueflare011@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 15:01:37 by socana-b          #+#    #+#             */
-/*   Updated: 2022/10/22 11:16:26 by socana-b         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:05:46 by blueflare01      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,16 @@ void	ft_move(t_win *win, int x, int y)
 	}
 }
 */
+
+void	win_text(t_win *win)
+{
+	char	*str;
+
+	str = ft_itoa(win->ness->steps);
+	mlx_put_image_to_window(win->mlx, win->win, win->hole, 0, 0);
+	mlx_string_put(win->mlx, win->win, 30, 40, 0xFFFFFF, str);
+	free(str);
+}
 
 void	manage_move(t_win *win, int x, int y)
 {
@@ -115,6 +125,7 @@ void	manage_move(t_win *win, int x, int y)
 	win->ness->ness_y = next_y;
 	ft_putnbr_fd(++win->ness->steps, 1);
 	write(1, "\n", 1);
+	win_text(win);
 }
 
 void	ft_move(t_win *win, int x, int y)
@@ -124,14 +135,17 @@ void	ft_move(t_win *win, int x, int y)
 
 	next_x = (win->ness->ness_x + x) / 80;
 	next_y = (win->ness->ness_y + y) / 80;
-	if (win->map[next_y][next_x] == HOLE)
+	if (win->map[next_y][next_x] == HOLE || (win->map[next_y][next_x] == EXIT
+		&& win->obj->num_obj != win->exit->exit_goal))
 		return ;
 	manage_move(win, x, y);
 	if (win->map[next_y][next_x] == OBJ)
 	{
+		win->map[next_y][next_x] = '0';
 		win->obj->num_obj++;
 	}
-	else if (win->map[next_y][next_x] == EXIT)
+	else if (win->map[next_y][next_x] == EXIT &&
+		win->obj->num_obj == win->exit->exit_goal)
 	{
 		break_all(win);
 		exit(0);

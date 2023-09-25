@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: blueflare011 <blueflare011@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 14:54:09 by socana-b          #+#    #+#             */
-/*   Updated: 2022/10/22 11:19:09 by socana-b         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:47:54 by blueflare01      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	put_map_in_window(t_win *win)
 		}
 		i++;
 	}
+	mlx_string_put(win->mlx, win->win, 30, 40, 0xFFFFFF, "0");
 }
 
 void	break_all(t_win *win)
@@ -80,7 +81,7 @@ void	break_all(t_win *win)
 	mlx_destroy_image(win->mlx, win->obj->object);
 	mlx_destroy_image(win->mlx, win->hole);
 	mlx_destroy_image(win->mlx, win->floor);
-	mlx_destroy_image(win->mlx, win->exit);
+	mlx_destroy_image(win->mlx, win->exit->open);
 	mlx_clear_window(win->mlx, win->win);
 }
 

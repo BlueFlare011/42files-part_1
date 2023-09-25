@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_settings.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: socana-b <socana-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: blueflare011 <blueflare011@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 14:40:48 by socana-b          #+#    #+#             */
-/*   Updated: 2022/10/22 11:13:07 by socana-b         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:53:38 by blueflare01      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	create_window(t_win *win)
 			win->size_y * 80, "Map");
 	create_images(win);
 	put_map_in_window(win);
-	mlx_key_hook(win->win, key_control, win);
+	//mlx_key_hook(win->win, key_control, win);
+	mlx_hook(win->win, 2, 1L << 0, key_control, win);
 	mlx_hook(win->win, 17, 1L << 17, close_window, win);
 	mlx_loop(win->mlx);
 }
