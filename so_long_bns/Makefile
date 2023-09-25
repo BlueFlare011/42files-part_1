@@ -17,11 +17,28 @@ CFLAGS	=			-Wall -Werror -Wextra
 
 NAME	=			so_long
 
+ifeq ($(shell uname), Linux)
+	MLX	= 			mlx_linux/
+
+	MLXNAME	=		mlx_linux/libmlx.a
+
+	FRAMEWORK	=	-lXext -lX11 -lm
+
+else
+	MLX		=		mlx/
+
+#	//MLXNAME	=		libmlx.dylib
+
+	FRAMEWORK	=	$(addprefix -framework , \
+					OpenGL \
+					AppKit) \
+					-lmlx
+endif
 
 all: $(NAME)
 $(NAME): $(OBJS)
 	@make -C Libft
-	$(CC) $(CFLAGS) $(OBJS) -lmlx -framework OpenGL -framework AppKit Libft/libft.a -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(MLXNAME) $(FRAMEWORK) Libft/libft.a -o $(NAME) -fsanitize=address
 
 clean:
 	@$(RM) $(OBJS) $(OBJSBONUS)

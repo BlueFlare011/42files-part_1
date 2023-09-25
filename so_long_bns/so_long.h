@@ -20,15 +20,15 @@
 # include <string.h>
 # include "get_next_line/get_next_line.h"
 # include "Libft/libft.h"
-# include <mlx.h>
+# include "./mlx_linux/mlx.h"
 
 enum
 {
-	KEY_UP = 13,
-	KEY_DOWN = 1,
-	KEY_LEFT = 0,
-	KEY_RIGHT = 2,
-	ESC = 53
+	KEY_UP = 119,
+	KEY_DOWN = 115,
+	KEY_LEFT = 97,
+	KEY_RIGHT = 100,
+	ESC = 65307
 };
 
 enum
