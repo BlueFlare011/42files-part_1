@@ -23,7 +23,7 @@ NAME	=			so_long
 
 all: $(NAME)
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) libmlx.a -lXext -lX11 -lm -o $(NAME)
 
 clean:
 	$(RM) $(OBJS) $(OBJSBONUS)

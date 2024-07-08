@@ -51,6 +51,7 @@ void	ft_move(t_Var *var, int x, int y)
 		mlx_put_image_to_window(var->mlx, var->win, var->ness,
 			var->ness_x, var->ness_y);
 	}
+	else if (!move_backend(var, x, y)){}
 	else
 	{
 		break_all(var);

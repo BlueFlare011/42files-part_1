@@ -19,15 +19,15 @@
 # include <fcntl.h>
 # include <string.h>
 # include "get_next_line/get_next_line.h"
-# include <mlx.h>
+# include "mlx.h"
 
 enum
 {
-	KEY_UP = 13,
-	KEY_DOWN = 1,
-	KEY_LEFT = 0,
-	KEY_RIGHT = 2,
-	ESC = 53
+	KEY_UP = 65362,
+	KEY_DOWN = 65364,
+	KEY_LEFT = 65361,
+	KEY_RIGHT = 65363,
+	ESC = 65307
 };
 
 enum
